@@ -1,28 +1,39 @@
 /* ── ABOUT PAGE ──────────────────────────────────── */
-.about-section {
-  padding: var(--sp-32) 0 var(--sp-24);
-  border-bottom: 1px solid var(--border-subtle);
-}
+.about-hero { padding: var(--sp-12) 0 var(--sp-16); }
+
+.about-hero .label { margin-bottom: var(--sp-16); }
 
 .about-title {
-  font-family: var(--font-display);
-  font-size: var(--text-h1);
+  font-family: var(--font-serif);
   font-weight: 400;
-  letter-spacing: var(--track-h1);
-  line-height: 1.4;
-  color: var(--text-primary);
-  margin-bottom: var(--sp-12);
-  max-width: 18ch;
+  font-size: var(--fs-xxl);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  max-width: 14ch;
 }
 
-.about-body {
-  max-width: var(--body-max);
+.about-main { padding: 0 0 var(--sp-24); }
+
+.about-main .grid {
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--rule);
+  row-gap: var(--sp-12);
 }
+
+.about-facts { grid-column: 1 / 5; align-self: start; }
+
+.about-body { grid-column: 6 / 12; }
 
 .about-body p {
-  font-size: var(--text-body);
-  letter-spacing: var(--track-body);
-  color: var(--text-secondary);
-  line-height: 1.75;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  max-width: var(--measure);
   margin-bottom: var(--sp-6);
+}
+
+.about-body p:first-child {
+  font-family: var(--font-serif);
+  font-size: var(--fs-l);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
 }

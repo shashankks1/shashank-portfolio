@@ -20,7 +20,7 @@ const out = (dir, name) => { fs.mkdirSync(`${SITE}/${dir}`, { recursive: true })
 const save = async (img, dir, name) => { const f = out(dir, name); await img.webp(Q).toFile(f); const m = await sharp(f).metadata(); console.log(`${dir}/${name}.webp ${m.width}x${m.height} ${(fs.statSync(f).size / 1024) | 0}KB`); };
 
 /** Lay images out in rows on a flat canvas. rows: [[file|buffer,...],...]; every row is scaled to `width`. */
-async function grid(rows, { width = W, gap = 24, pad = 0, bg = '#111110' } = {}) {
+async function grid(rows, { width = W, gap = 24, pad = 0, bg = '#EFEDE8' } = {}) {  // paper — matches the v2 site
   const placed = []; let y = pad;
   for (const row of rows) {
     const metas = await Promise.all(row.map(async f => sharp(f, { limitInputPixels: false }).metadata()));
@@ -50,7 +50,7 @@ const fit = (f, w) => sharp(f, { limitInputPixels: false }).resize({ width: w, w
     <rect width="2400" height="1600" fill="url(#g)"/></svg>`);
   const mm = await sharp(mark).metadata();
   await save(sharp(field).composite([{ input: mark, left: Math.round((2400 - mm.width) / 2), top: Math.round((1600 - mm.height) / 2) }]), d, 'cover');
-  await save(await grid([[S('grabs/old-logo.png'), S('grabs/new-logo.png')]], { gap: 24, bg: '#111110' }), d, 'before-after');
+  await save(await grid([[S('grabs/old-logo.png'), S('grabs/new-logo.png')]], { gap: 24 }), d, 'before-after');
   await save(await grid([[S('grabs/test-stamp.png')], [S('grabs/test-photocopy.png')], [S('grabs/test-tab.png')]], { width: 1316, gap: 0, bg: '#ffffff' }), d, 'three-tests');
   await save(fit(S('grabs/gap-vs-colour.png'), 1316), d, 'gap-not-colour');
   await save(fit(`${V}/20-Brand/logo-guidelines/size-ladder-d3/ladder.png`, 1500), d, 'size-ladder');
@@ -80,8 +80,8 @@ const fit = (f, w) => sharp(f, { limitInputPixels: false }).resize({ width: w, w
   const tw = (2400 - 16 * 6) / 7;
   const labels = ['EN', 'EN', 'EN', 'HI', 'HI', 'GU', 'GU'];
   const legend = Buffer.from(`<svg width="2400" height="90" xmlns="http://www.w3.org/2000/svg">${labels.map((l, i) =>
-    `<text x="${i * (tw + 16) + tw / 2}" y="56" text-anchor="middle" font-family="Inter, Arial" font-size="30" letter-spacing="4" fill="#ADADAA">${l}</text>`).join('')}</svg>`);
-  await save(sharp({ create: { width: 2400, height: rm.height + 90, channels: 3, background: '#111110' } })
+    `<text x="${i * (tw + 16) + tw / 2}" y="56" text-anchor="middle" font-family="Inter, Arial" font-size="30" letter-spacing="4" fill="#57554F">${l}</text>`).join('')}</svg>`);
+  await save(sharp({ create: { width: 2400, height: rm.height + 90, channels: 3, background: '#EFEDE8' } })
     .composite([{ input: rowBuf, left: 0, top: 0 }, { input: legend, left: 0, top: rm.height }]), d, 'one-set');
   // The 3x3 rule: clean template beside the same template with the grid.
   const src = `${F}/indian-air-force-day-2026/indian-air-force-day-2026-003.webp`;

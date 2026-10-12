@@ -1,69 +1,68 @@
-/* ── NAVIGATION ──────────────────────────────────── */
-nav {
-  height: 64px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--border-subtle);
-  background: var(--bg-page);
+/* ── SITE HEADER ─────────────────────────────────── */
+.site-header {
   position: sticky;
   top: 0;
   z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
 }
 
-/* nav is a flex container, so its .container would otherwise shrink to its content */
-nav > .container { width: 100%; }
-
-.nav-inner {
-  display: flex;
+.site-header-inner {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  height: var(--header-h);
 }
 
-.nav-wordmark {
+.brand {
+  grid-column: 1 / 5;
   display: inline-flex;
   align-items: center;
-  color: var(--logo);
+  gap: 12px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  justify-self: start;
 }
 
-.nav-logo {
-  display: block;
-  color: var(--logo);
+.brand svg { width: 30px; height: auto; flex-shrink: 0; }
+
+.site-header-role {
+  grid-column: 5 / 9;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--ink-2);
 }
+
+.site-nav { grid-column: 9 / 13; justify-self: end; }
 
 .nav-links {
   display: flex;
   gap: var(--sp-8);
-  list-style: none;
 }
 
 .nav-links a {
-  font-size: var(--text-body);
-  font-weight: 400;
-  letter-spacing: var(--track-cta);
-  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  color: var(--ink);
   position: relative;
-  padding-bottom: 3px;
+  padding-bottom: 2px;
 }
 
-/* The one transition on the site — underline slides in from left, 0.2s */
+/* The one transition on the site — underline slides in from the left, 0.2s */
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   width: 0;
-  height: 1px;
-  background: var(--interactive);
+  height: 2px;
+  background: var(--accent);
   transition: width 0.2s ease;
 }
 
-.nav-links a:hover,
-.nav-links a[aria-current="page"] {
-  color: var(--text-primary);
-}
-
 .nav-links a:hover::after,
-.nav-links a[aria-current="page"]::after {
-  width: 100%;
-}
+.nav-links a[aria-current="page"]::after { width: 100%; }

@@ -1,52 +1,77 @@
-/* ── TOKENS ──────────────────────────────────────── */
+/* ── TOKENS — design system v2 (2026-10-13) ─────────
+   Source: Shashank's brief "Brand Aesthetic – Creative Polymath".
+   Neutral paper base + one bold accent · clean sans core + expressive serif
+   accent + mono for information · clean grid with expressive accents.
+   ─────────────────────────────────────────────────── */
 :root {
-  /* Colors — dark mode, 3-layer token system */
-  --bg-page:              #111110;
-  --bg-surface:           #383836;
-  --text-primary:         #F7F7F5;
-  --text-secondary:       #ADADAA;
-  --text-disabled:        #535350;
-  --border-default:       #535350;
-  --border-subtle:        #383836;
-  --interactive:          #7A9BE3;
-  --interactive-hover:    #A9BEF0;
-  --interactive-active:   #5378D4;
-  --accent:               #D170C7;
-  --logo:                 #2C57CA;
+  /* Colour — neutrals carry everything; orange is the one spark */
+  --paper:        #EFEDE8;   /* page */
+  --paper-raised: #F7F6F2;   /* mats behind images */
+  --ink:          #151515;   /* text, strong rules */
+  --ink-2:        #57554F;   /* secondary text — 6.2:1 on paper */
+  --ink-3:        #8C8A83;   /* decorative only (grid guides, folios) — fails text contrast */
+  --rule:         #151515;
+  --rule-soft:    rgba(21, 21, 21, 0.14);
+  --accent:       #FF4F12;   /* rich orange — marks, numbers, large type only */
+  --accent-ink:   #C2380A;   /* orange for small text and hovers — 6.8:1 on paper */
 
-  /* Fonts */
-  --font-display:  'Libre Baskerville', Georgia, serif;
-  --font-section:  'Syne', system-ui, sans-serif;
-  --font-body:     'Inter', system-ui, sans-serif;
+  /* Type families */
+  --font-sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Instrument Serif', 'Libre Baskerville', Georgia, serif;
+  --font-mono:  'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
 
-  /* Type scale — matches Figma design system exactly */
-  --text-overline: 0.625rem;   /* 10px  — UI/Overline  */
-  --text-body:     0.75rem;    /* 12px  — UI/Body, UI/CTA */
-  --text-subhead:  1.25rem;    /* 20px  — UI/Subhead, Section/Heading */
-  --text-h2:       2rem;       /* 32px  — Display/H2   */
-  --text-h1:       2.75rem;    /* 44px  — Display/H1   */
+  /* Type scale — fluid between phone and wide desktop */
+  --fs-mega:  clamp(3.5rem, 13.2vw, 15rem);    /* the name — poster scale */
+  --fs-xxl:   clamp(2.75rem, 6.4vw, 6rem);     /* case-study titles */
+  --fs-xl:    clamp(2.25rem, 4.4vw, 4rem);     /* section titles */
+  --fs-l:     clamp(1.75rem, 2.6vw, 2.5rem);   /* project titles, pull quotes */
+  --fs-m:     clamp(1.25rem, 1.6vw, 1.5rem);   /* lead paragraphs */
+  --fs-body:  1rem;                            /* 16px */
+  --fs-small: 0.875rem;                        /* captions */
+  --fs-mono:  0.75rem;                         /* labels — set uppercase */
 
-  /* Letter spacing */
-  --track-h1:       -0.01em;
-  --track-h2:       -0.008em;
-  --track-subhead:   0.005em;
-  --track-body:      0.02em;
-  --track-cta:       0.04em;
-  --track-overline:  0.1em;
+  --lh-tight: 1.02;
+  --lh-head:  1.15;
+  --lh-body:  1.65;
+  --track-mono: 0.06em;
+  --track-tight: -0.02em;
 
-  /* Spacing (8px base) */
-  --sp-1:   4px;
-  --sp-2:   8px;
-  --sp-3:   12px;
-  --sp-4:   16px;
-  --sp-6:   24px;
-  --sp-8:   32px;
-  --sp-12:  48px;
-  --sp-16:  64px;
-  --sp-24:  96px;
-  --sp-32:  128px;
+  /* Space — 8px base (names kept from v1 so old markup still resolves) */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-24: 96px;
+  --sp-32: 128px;
 
-  /* Layout */
-  --max-w:    1280px;
-  --body-max: 65ch;
+  /* Layout — 12-column grid */
+  --max-w:   1440px;
+  --gutter:  clamp(20px, 3.4vw, 48px);
+  --gap:     clamp(14px, 1.8vw, 28px);
+  --measure: 65ch;
+  --header-h: 56px;
+
+  /* v1 aliases — keep legacy pages (wip, components) readable */
+  --bg-page: var(--paper);
+  --bg-surface: var(--paper-raised);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-2);
+  --text-disabled: var(--ink-3);
+  --border-subtle: var(--rule-soft);
+  --border-default: var(--rule);
+  --interactive: var(--accent-ink);
+  --interactive-hover: var(--ink);
+  --font-display: var(--font-serif);
+  --font-body: var(--font-sans);
+  --font-section: var(--font-sans);
+  --text-body: var(--fs-body);
+  --text-subhead: var(--fs-m);
+  --text-h1: var(--fs-xxl);
+  --text-h2: var(--fs-l);
+  --text-overline: var(--fs-mono);
+  --body-max: var(--measure);
 }
