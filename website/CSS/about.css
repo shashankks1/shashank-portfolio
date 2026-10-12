@@ -1,0 +1,28 @@
+/* ── ABOUT PAGE ──────────────────────────────────── */
+.about-section {
+  padding: var(--sp-32) 0 var(--sp-24);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.about-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 400;
+  letter-spacing: var(--track-h1);
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-12);
+  max-width: 18ch;
+}
+
+.about-body {
+  max-width: var(--body-max);
+}
+
+.about-body p {
+  font-size: var(--text-body);
+  letter-spacing: var(--track-body);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: var(--sp-6);
+}

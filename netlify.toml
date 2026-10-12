@@ -1,0 +1,11 @@
+# Netlify deploys this repo automatically on every push to main.
+#
+# Right now the domain serves only the work-in-progress page.
+# To put the full portfolio live, change publish to "website" and push.
+#
+# Before you do: the two Vistofy case studies (website/work/vistofy-*.html and
+# website/assets/images/vistofy-*/) must not go live without Vistofy's written
+# permission. Get it, or delete those files (and their links on the home page) first.
+
+[build]
+  publish = "website/wip-deploy"

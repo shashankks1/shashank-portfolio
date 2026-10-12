@@ -1,0 +1,13 @@
+# Pinterest / reference moodboard images — third-party, not ours to publish
+Research/
+
+# Local agent and editor settings
+.claude/
+
+# Font download zips (the site loads fonts from Google Fonts)
+*.zip
+
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store

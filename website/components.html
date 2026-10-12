@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Component Library — SKS Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&family=Syne:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/style.css" />
+
+  <style>
+    /* ── Component library shell — not part of the design system ── */
+    .cl-page       { padding: 96px 0; }
+    .cl-section    { margin-bottom: 96px; }
+    .cl-label      { font-family: var(--font-body); font-size: 10px; font-weight: 500;
+                     letter-spacing: 0.1em; text-transform: uppercase;
+                     color: var(--text-disabled); margin-bottom: 32px;
+                     padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle); }
+    .cl-row        { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px; margin-bottom: 24px; }
+    .cl-col        { display: flex; flex-direction: column; gap: 16px; min-width: 240px; }
+    .cl-item-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+                     color: var(--text-disabled); margin-bottom: 8px; }
+    .cl-swatch     { display: flex; align-items: center; gap: 12px; }
+    .cl-dark-bg    { background: var(--bg-surface); padding: 24px; border-radius: 8px; }
+    .cl-preview    { border: 1px solid var(--border-subtle); border-radius: 8px; overflow: hidden; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════════ -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-wordmark" aria-label="Shashank Kumar Sinha">
+          <svg width="52" height="36" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-logo">
+            <path d="M4.15007 35.53C3.67007 35.53 3.21007 35.34 2.88007 34.99C2.56007 34.65 2.38007 34.21 2.39007 33.74C2.40007 33.27 2.59007 32.83 2.93007 32.51L10.2201 25.51C10.5901 25.15 10.7101 24.61 10.5201 24.13C10.3301 23.65 9.87007 23.34 9.35007 23.34H6.04007C3.53007 23.34 1.39007 21.89 0.460074 19.57C-0.479926 17.24 0.0700736 14.72 1.88007 12.98L14.5501 0.81C15.0101 0.37 15.5801 0.13 16.2001 0.13C17.3901 0.13 18.6301 1.03 18.6301 2.54V10.39C18.6301 11.08 18.9001 11.72 19.3801 12.21C19.8701 12.69 20.5101 12.96 21.2001 12.96C22.5501 12.96 23.8301 12.45 24.8001 11.51L32.9301 3.79C33.2601 3.48 33.6901 3.31 34.1401 3.31C34.6201 3.31 35.0701 3.5 35.4101 3.85C35.7401 4.19 35.9101 4.64 35.9001 5.11C35.8901 5.58 35.6901 6.02 35.3501 6.35L27.8801 13.44C26.9601 14.32 26.8201 15.72 27.5501 16.76L36.1101 29.09C36.4501 29.58 37.0001 29.87 37.6001 29.87C38.0801 29.87 38.5401 29.68 38.8801 29.34L42.9601 25.26C43.3301 24.89 43.4301 24.37 43.2301 23.89C43.0301 23.41 42.5901 23.11 42.0701 23.11H39.1501C36.6701 23.11 34.5401 21.69 33.5901 19.4C32.6401 17.11 33.1401 14.6 34.8901 12.84L47.0201 0.71C47.6101 0.12 48.2601 0 48.7001 0C49.8901 0 51.1301 0.9 51.1301 2.41V12.38C51.1301 13.35 50.3401 14.14 49.3701 14.14C48.4001 14.14 47.6101 13.35 47.6101 12.38V9.34C47.6101 8.37 46.8201 7.58 45.8501 7.58C45.3901 7.58 44.9501 7.76 44.6201 8.1L38.4701 14.25C37.5601 15.16 37.3001 16.46 37.7901 17.65C38.2801 18.84 39.3901 19.58 40.6701 19.58H50.8601C51.4201 19.58 51.7801 19.94 51.9201 20.28C52.0601 20.62 52.0701 21.13 51.6701 21.53L38.3701 34.83C38.0401 35.16 37.6001 35.35 37.1201 35.35C36.6401 35.35 36.2101 35.17 35.8701 34.83L35.7601 34.72C35.7101 34.67 35.6401 34.58 35.5801 34.49L25.5001 19.97C23.9801 17.78 21.4801 16.48 18.8201 16.48H16.8601C15.8901 16.48 15.1001 15.69 15.1001 14.72V9.27C15.1001 8.3 14.3101 7.51 13.3401 7.51C12.8901 7.51 12.4601 7.68 12.1301 8L5.43007 14.43C4.49007 15.33 4.21007 16.64 4.70007 17.84C5.18007 19.05 6.29007 19.8 7.59007 19.8H16.8601C17.7401 19.8 18.2801 20.37 18.4901 20.9C18.7001 21.43 18.7101 22.22 18.0801 22.83L5.37007 35.03C5.04007 35.35 4.61007 35.52 4.15007 35.52V35.53Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <ul class="nav-links">
+          <li><a href="Index.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mailto:sinha.shashank92@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="cl-page">
+    <div class="container">
+
+
+      <!-- ── 00 HEADER / NAVIGATION ──────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">00 — Header / Navigation</p>
+        <div class="cl-preview">
+          <div style="height:64px; display:flex; align-items:center; border-bottom:1px solid var(--border-subtle); padding: 0 48px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+              <a href="#" style="display:inline-flex; align-items:center; color:var(--logo);">
+                <svg width="52" height="36" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.15007 35.53C3.67007 35.53 3.21007 35.34 2.88007 34.99C2.56007 34.65 2.38007 34.21 2.39007 33.74C2.40007 33.27 2.59007 32.83 2.93007 32.51L10.2201 25.51C10.5901 25.15 10.7101 24.61 10.5201 24.13C10.3301 23.65 9.87007 23.34 9.35007 23.34H6.04007C3.53007 23.34 1.39007 21.89 0.460074 19.57C-0.479926 17.24 0.0700736 14.72 1.88007 12.98L14.5501 0.81C15.0101 0.37 15.5801 0.13 16.2001 0.13C17.3901 0.13 18.6301 1.03 18.6301 2.54V10.39C18.6301 11.08 18.9001 11.72 19.3801 12.21C19.8701 12.69 20.5101 12.96 21.2001 12.96C22.5501 12.96 23.8301 12.45 24.8001 11.51L32.9301 3.79C33.2601 3.48 33.6901 3.31 34.1401 3.31C34.6201 3.31 35.0701 3.5 35.4101 3.85C35.7401 4.19 35.9101 4.64 35.9001 5.11C35.8901 5.58 35.6901 6.02 35.3501 6.35L27.8801 13.44C26.9601 14.32 26.8201 15.72 27.5501 16.76L36.1101 29.09C36.4501 29.58 37.0001 29.87 37.6001 29.87C38.0801 29.87 38.5401 29.68 38.8801 29.34L42.9601 25.26C43.3301 24.89 43.4301 24.37 43.2301 23.89C43.0301 23.41 42.5901 23.11 42.0701 23.11H39.1501C36.6701 23.11 34.5401 21.69 33.5901 19.4C32.6401 17.11 33.1401 14.6 34.8901 12.84L47.0201 0.71C47.6101 0.12 48.2601 0 48.7001 0C49.8901 0 51.1301 0.9 51.1301 2.41V12.38C51.1301 13.35 50.3401 14.14 49.3701 14.14C48.4001 14.14 47.6101 13.35 47.6101 12.38V9.34C47.6101 8.37 46.8201 7.58 45.8501 7.58C45.3901 7.58 44.9501 7.76 44.6201 8.1L38.4701 14.25C37.5601 15.16 37.3001 16.46 37.7901 17.65C38.2801 18.84 39.3901 19.58 40.6701 19.58H50.8601C51.4201 19.58 51.7801 19.94 51.9201 20.28C52.0601 20.62 52.0701 21.13 51.6701 21.53L38.3701 34.83C38.0401 35.16 37.6001 35.35 37.1201 35.35C36.6401 35.35 36.2101 35.17 35.8701 34.83L35.7601 34.72C35.7101 34.67 35.6401 34.58 35.5801 34.49L25.5001 19.97C23.9801 17.78 21.4801 16.48 18.8201 16.48H16.8601C15.8901 16.48 15.1001 15.69 15.1001 14.72V9.27C15.1001 8.3 14.3101 7.51 13.3401 7.51C12.8901 7.51 12.4601 7.68 12.1301 8L5.43007 14.43C4.49007 15.33 4.21007 16.64 4.70007 17.84C5.18007 19.05 6.29007 19.8 7.59007 19.8H16.8601C17.7401 19.8 18.2801 20.37 18.4901 20.9C18.7001 21.43 18.7101 22.22 18.0801 22.83L5.37007 35.03C5.04007 35.35 4.61007 35.52 4.15007 35.52V35.53Z" fill="currentColor"/>
+                </svg>
+              </a>
+              <ul style="display:flex; gap:32px; list-style:none;">
+                <li><a href="#" class="nav-links" style="font-size:var(--text-body); letter-spacing:var(--track-cta); color:var(--text-secondary);">Work</a></li>
+                <li><a href="#" style="font-size:var(--text-body); letter-spacing:var(--track-cta); color:var(--text-secondary);">About</a></li>
+                <li><a href="#" style="font-size:var(--text-body); letter-spacing:var(--track-cta); color:var(--text-secondary);">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 01 LOGO ──────────────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">01 — Logo</p>
+        <div class="cl-row" style="align-items: center;">
+          <div>
+            <p class="cl-item-label">32px</p>
+            <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--logo)">
+              <path d="M2.42011 21.77C2.16011 21.77 1.92011 21.67 1.74011 21.48C1.57011 21.3 1.48011 21.06 1.48011 20.81C1.48011 20.56 1.59011 20.33 1.77011 20.15L6.30011 15.8C6.58011 15.53 6.67011 15.13 6.52011 14.77C6.38011 14.41 6.03011 14.18 5.65011 14.18H3.59011C2.10011 14.18 0.820113 13.32 0.270113 11.94C-0.289887 10.56 0.0401133 9.05 1.11011 8.02L8.99011 0.46C9.31011 0.15 9.67011 0.08 9.90011 0.08C10.5601 0.08 11.2501 0.58 11.2501 1.42V6.3C11.2501 6.77 11.4301 7.21 11.7601 7.54C12.0901 7.87 12.5301 8.05 13.0001 8.05C13.8801 8.05 14.7101 7.71 15.3501 7.1L20.4001 2.3C20.5801 2.13 20.8001 2.04 21.0501 2.04C21.3101 2.04 21.5501 2.14 21.7201 2.33C21.8901 2.51 21.9901 2.75 21.9801 3C21.9801 3.25 21.8701 3.48 21.6901 3.66L17.0501 8.06C16.4201 8.66 16.3301 9.62 16.8201 10.33L22.1401 17.99C22.3801 18.33 22.7701 18.54 23.1901 18.54C23.5301 18.54 23.8501 18.41 24.0901 18.17L26.6301 15.63C26.9001 15.36 26.9801 14.96 26.8301 14.61C26.6801 14.26 26.3401 14.03 25.9601 14.03H24.1501C22.6701 14.03 21.4101 13.18 20.8401 11.82C20.2701 10.46 20.5701 8.96 21.6201 7.92L29.1701 0.4C29.5001 0.07 29.8601 0 30.1001 0C30.7601 0 31.4501 0.5 31.4501 1.34V7.54C31.4501 8.06 31.0301 8.48 30.5101 8.48C29.9901 8.48 29.5701 8.06 29.5701 7.54V5.65C29.5701 4.96 29.0101 4.4 28.3201 4.4C27.9901 4.4 27.6801 4.53 27.4401 4.77L23.6201 8.59C23.0101 9.2 22.8301 10.08 23.1701 10.87C23.5001 11.67 24.2401 12.17 25.1101 12.17H31.4401C31.7801 12.17 31.9201 12.43 31.9501 12.51C31.9801 12.59 32.0701 12.87 31.8301 13.11L23.5701 21.37C23.3901 21.55 23.1601 21.64 22.9101 21.64C22.6601 21.64 22.4201 21.54 22.2501 21.37C22.1601 21.28 22.1201 21.23 22.0901 21.19L15.8201 12.17C14.8501 10.77 13.2501 9.93 11.5401 9.93H10.3201C9.80011 9.93 9.38011 9.51 9.38011 8.99V5.6C9.38011 4.91 8.82011 4.35 8.13011 4.35C7.81011 4.35 7.51011 4.47 7.27011 4.7L3.11011 8.7C2.48011 9.3 2.29011 10.18 2.62011 10.99C2.95011 11.8 3.69011 12.3 4.57011 12.3H10.3301C10.8001 12.3 11.0901 12.6 11.2001 12.89C11.3101 13.17 11.3201 13.59 10.9801 13.92L3.08011 21.5C2.91011 21.67 2.68011 21.76 2.43011 21.76L2.42011 21.77Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div>
+            <p class="cl-item-label">52px — nav default</p>
+            <svg width="52" height="36" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--logo)">
+              <path d="M4.15007 35.53C3.67007 35.53 3.21007 35.34 2.88007 34.99C2.56007 34.65 2.38007 34.21 2.39007 33.74C2.40007 33.27 2.59007 32.83 2.93007 32.51L10.2201 25.51C10.5901 25.15 10.7101 24.61 10.5201 24.13C10.3301 23.65 9.87007 23.34 9.35007 23.34H6.04007C3.53007 23.34 1.39007 21.89 0.460074 19.57C-0.479926 17.24 0.0700736 14.72 1.88007 12.98L14.5501 0.81C15.0101 0.37 15.5801 0.13 16.2001 0.13C17.3901 0.13 18.6301 1.03 18.6301 2.54V10.39C18.6301 11.08 18.9001 11.72 19.3801 12.21C19.8701 12.69 20.5101 12.96 21.2001 12.96C22.5501 12.96 23.8301 12.45 24.8001 11.51L32.9301 3.79C33.2601 3.48 33.6901 3.31 34.1401 3.31C34.6201 3.31 35.0701 3.5 35.4101 3.85C35.7401 4.19 35.9101 4.64 35.9001 5.11C35.8901 5.58 35.6901 6.02 35.3501 6.35L27.8801 13.44C26.9601 14.32 26.8201 15.72 27.5501 16.76L36.1101 29.09C36.4501 29.58 37.0001 29.87 37.6001 29.87C38.0801 29.87 38.5401 29.68 38.8801 29.34L42.9601 25.26C43.3301 24.89 43.4301 24.37 43.2301 23.89C43.0301 23.41 42.5901 23.11 42.0701 23.11H39.1501C36.6701 23.11 34.5401 21.69 33.5901 19.4C32.6401 17.11 33.1401 14.6 34.8901 12.84L47.0201 0.71C47.6101 0.12 48.2601 0 48.7001 0C49.8901 0 51.1301 0.9 51.1301 2.41V12.38C51.1301 13.35 50.3401 14.14 49.3701 14.14C48.4001 14.14 47.6101 13.35 47.6101 12.38V9.34C47.6101 8.37 46.8201 7.58 45.8501 7.58C45.3901 7.58 44.9501 7.76 44.6201 8.1L38.4701 14.25C37.5601 15.16 37.3001 16.46 37.7901 17.65C38.2801 18.84 39.3901 19.58 40.6701 19.58H50.8601C51.4201 19.58 51.7801 19.94 51.9201 20.28C52.0601 20.62 52.0701 21.13 51.6701 21.53L38.3701 34.83C38.0401 35.16 37.6001 35.35 37.1201 35.35C36.6401 35.35 36.2101 35.17 35.8701 34.83L35.7601 34.72C35.7101 34.67 35.6401 34.58 35.5801 34.49L25.5001 19.97C23.9801 17.78 21.4801 16.48 18.8201 16.48H16.8601C15.8901 16.48 15.1001 15.69 15.1001 14.72V9.27C15.1001 8.3 14.3101 7.51 13.3401 7.51C12.8901 7.51 12.4601 7.68 12.1301 8L5.43007 14.43C4.49007 15.33 4.21007 16.64 4.70007 17.84C5.18007 19.05 6.29007 19.8 7.59007 19.8H16.8601C17.7401 19.8 18.2801 20.37 18.4901 20.9C18.7001 21.43 18.7101 22.22 18.0801 22.83L5.37007 35.03C5.04007 35.35 4.61007 35.52 4.15007 35.52V35.53Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div>
+            <p class="cl-item-label">72px</p>
+            <img src="Asset/LOGO/Logo=72.svg" alt="SKS Logo 72px" style="height:50px; color:var(--logo)">
+          </div>
+          <div>
+            <p class="cl-item-label">104px</p>
+            <img src="Asset/LOGO/Logo=104.svg" alt="SKS Logo 104px" style="height:72px;">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 02 AVAILABILITY DOT ───────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">02 — Availability Dot</p>
+        <div class="cl-row">
+          <div>
+            <p class="cl-item-label">Available</p>
+            <div class="availability">
+              <span class="availability-dot"></span>
+              Available for work
+            </div>
+          </div>
+          <div>
+            <p class="cl-item-label">Unavailable</p>
+            <div class="availability">
+              <span class="availability-dot" style="background: var(--text-disabled);"></span>
+              Not available
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 03 TAG ─────────────────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">03 — Tag</p>
+        <div class="cl-row" style="align-items: center;">
+          <div>
+            <p class="cl-item-label">Default</p>
+            <div class="tags">
+              <span class="tag">UX Research</span>
+              <span class="tag">Product Design</span>
+            </div>
+          </div>
+          <div>
+            <p class="cl-item-label">More examples</p>
+            <div class="tags">
+              <span class="tag">Web Design</span>
+              <span class="tag">Brand Identity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 04 DIVIDER ─────────────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">04 — Divider</p>
+        <div style="display: flex; flex-direction: column; gap: 32px; max-width: 640px;">
+          <div>
+            <p class="cl-item-label" style="margin-bottom:12px;">Default — border/default #535350</p>
+            <hr class="divider">
+          </div>
+          <div>
+            <p class="cl-item-label" style="margin-bottom:12px;">Subtle — border/subtle #383836</p>
+            <hr class="divider-subtle">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 05 BUTTON ──────────────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">05 — Button</p>
+        <div class="cl-row" style="align-items: center;">
+          <div>
+            <p class="cl-item-label">Primary</p>
+            <button class="btn btn-primary">Get in touch</button>
+          </div>
+          <div>
+            <p class="cl-item-label">Secondary</p>
+            <button class="btn btn-secondary">View work</button>
+          </div>
+          <div>
+            <p class="cl-item-label">Ghost</p>
+            <button class="btn btn-ghost">Learn more</button>
+          </div>
+        </div>
+        <div class="cl-row" style="align-items: center; margin-top: 8px;">
+          <div>
+            <p class="cl-item-label">As link (Primary)</p>
+            <a href="#" class="btn btn-primary">Get in touch</a>
+          </div>
+          <div>
+            <p class="cl-item-label">As link (Secondary)</p>
+            <a href="#" class="btn btn-secondary">View work</a>
+          </div>
+          <div>
+            <p class="cl-item-label">As link (Ghost)</p>
+            <a href="#" class="btn btn-ghost">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 06 INPUT ───────────────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">06 — Input</p>
+        <div class="cl-row">
+          <div class="cl-col">
+            <p class="cl-item-label">Default</p>
+            <div class="input-group">
+              <label class="input-label">Your name</label>
+              <input class="input-control" type="text" placeholder="e.g. Jane Smith">
+            </div>
+          </div>
+          <div class="cl-col">
+            <p class="cl-item-label">Filled (type to see)</p>
+            <div class="input-group">
+              <label class="input-label">Email</label>
+              <input class="input-control" type="email" value="hello@brand.com">
+            </div>
+          </div>
+          <div class="cl-col">
+            <p class="cl-item-label">Disabled</p>
+            <div class="input-group">
+              <label class="input-label">Read only</label>
+              <input class="input-control" type="text" value="Not editable" disabled>
+            </div>
+          </div>
+          <div class="cl-col">
+            <p class="cl-item-label">Error</p>
+            <div class="input-group">
+              <label class="input-label">Email</label>
+              <input class="input-control is-error" type="email" value="not-an-email">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 07 TEXTAREA ────────────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">07 — Textarea</p>
+        <div class="cl-row">
+          <div class="cl-col">
+            <p class="cl-item-label">Default</p>
+            <div class="textarea-group">
+              <label class="textarea-label">Message</label>
+              <textarea class="textarea-control" placeholder="Tell me about your project…"></textarea>
+            </div>
+          </div>
+          <div class="cl-col">
+            <p class="cl-item-label">Disabled</p>
+            <div class="textarea-group">
+              <label class="textarea-label">Notes</label>
+              <textarea class="textarea-control" disabled>This field is disabled.</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 08 SECTION HEADING ─────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">08 — Section Heading</p>
+        <p class="section-overline">Selected Work</p>
+        <h2 class="section-heading">Projects</h2>
+      </div>
+
+
+      <!-- ── 09 PROJECT CARD — FEATURED ────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">09 — Project Card / Featured</p>
+        <a href="#" class="project-featured">
+          <div class="project-featured-image">
+            <img src="Asset/Learnet home page@3x-100.jpg" alt="Learnet project screenshot" onerror="this.style.display='none'">
+          </div>
+          <div class="project-featured-content">
+            <div class="tags">
+              <span class="tag">UX Research</span>
+              <span class="tag">Product Design</span>
+            </div>
+            <h3 class="project-featured-title">Learnet Skills —<br>F&D Program</h3>
+            <p class="project-featured-desc">A multilingual mobile learning platform for women entrepreneurs in India's apparel sector. Full process: field research across 6 cities, personas, design system, and prototype.</p>
+            <span class="project-link">View case study →</span>
+          </div>
+        </a>
+      </div>
+
+
+      <!-- ── 10 PROJECT CARD — SECONDARY ────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">10 — Project Card / Secondary (pair)</p>
+        <div class="projects-secondary">
+          <a href="#" class="project-secondary">
+            <div class="tags"><span class="tag">Web Design</span></div>
+            <h3 class="project-secondary-title">MB Consulting</h3>
+            <p class="project-secondary-desc">Website design and build for an architecture and interior design firm in Jaipur. Layout, UX, and full execution — live at mbcon.in.</p>
+            <span class="project-link">View project →</span>
+          </a>
+          <a href="#" class="project-secondary">
+            <div class="tags"><span class="tag">Brand Identity</span></div>
+            <h3 class="project-secondary-title">COPO</h3>
+            <p class="project-secondary-desc">Logo design and brand identity for a handcrafted goods e-commerce brand rooted in Assam's textile and craft traditions.</p>
+            <span class="project-link">View project →</span>
+          </a>
+        </div>
+      </div>
+
+
+      <!-- ── 11 ABOUT PULL ──────────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">11 — About Pull</p>
+        <p class="about-pull-text">I design brand identities and websites for founders and growing businesses — from the logo to the live site, one process, one voice.</p>
+        <a href="#" class="link-arrow">About me →</a>
+      </div>
+
+
+      <!-- ── 12 CONTACT CTA ─────────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">12 — Contact CTA</p>
+        <h2 class="contact-cta-heading">Let's work together</h2>
+        <p class="contact-cta-sub">Open to freelance projects and studio roles.</p>
+        <a href="mailto:sinha.shashank92@gmail.com" class="contact-email">sinha.shashank92@gmail.com</a>
+      </div>
+
+
+      <!-- ── 13 CASE STUDY — HERO ───────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">13 — Case Study / Hero</p>
+        <div class="case-hero" style="border-bottom: none; padding-bottom: 0;">
+          <a href="#" class="case-hero-back">← All projects</a>
+          <div class="tags" style="margin-bottom: 24px;">
+            <span class="tag">UX Research</span>
+            <span class="tag">Product Design</span>
+          </div>
+          <h1 class="case-hero-title">Learnet Skills — F&D Program</h1>
+          <p class="case-hero-desc">A multilingual mobile learning platform for women entrepreneurs in India's apparel sector.</p>
+        </div>
+      </div>
+
+
+      <!-- ── 14 CASE STUDY — META ROW ──────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">14 — Case Study / Metadata Row</p>
+        <div class="meta-row">
+          <div class="meta-item">
+            <span class="meta-label">Client</span>
+            <span class="meta-value">Learnet Skills</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Year</span>
+            <span class="meta-value">2024</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Scope</span>
+            <span class="meta-value">UX Research, Product Design</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">Project cancelled — funding</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 15 CASE STUDY — BODY TEXT ─────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">15 — Case Study / Body Text (65ch)</p>
+        <div class="case-body" style="padding: 0;">
+          <h2>The Brief</h2>
+          <p>The client needed a mobile learning platform that could deliver vocational training to women in rural and semi-urban areas — in multiple Indian languages, on low-end Android devices, with limited data connectivity.</p>
+          <p>The design challenge was not just interface — it was literacy, trust, and cultural context across six different cities with vastly different user profiles.</p>
+          <h3>Research approach</h3>
+          <p>We conducted field research across Jaipur, Tiruppur, Ludhiana, Kolkata, Surat, and Delhi — observing workers in garment factories, interviewing supervisors, and running contextual inquiry sessions with the target users.</p>
+        </div>
+      </div>
+
+
+      <!-- ── 16 CASE STUDY — PULL QUOTE ────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">16 — Case Study / Pull Quote</p>
+        <blockquote class="pull-quote">
+          "The women already knew how to learn — they learned by watching each other. The platform needed to feel like that, not like a classroom."
+        </blockquote>
+      </div>
+
+
+      <!-- ── 17 CASE STUDY — IMAGE FULL WIDTH ──────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">17 — Case Study / Image Full Width</p>
+        <div class="case-img-full" style="height: 320px; display:flex; align-items:center; justify-content:center;">
+          <span style="color: var(--text-disabled); font-size: var(--text-body); letter-spacing: var(--track-body);">Full-width image — 1184 × 640</span>
+        </div>
+        <p class="img-caption">Figure 1 — User journey map across six research cities</p>
+      </div>
+
+
+      <!-- ── 18 CASE STUDY — IMAGE OFFSET RIGHT ────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">18 — Case Study / Image Offset Right</p>
+        <div class="case-img-offset" style="height: 240px; display:flex; align-items:center; justify-content:center;">
+          <span style="color: var(--text-disabled); font-size: var(--text-body); letter-spacing: var(--track-body);">Offset image — 760 × 480</span>
+        </div>
+        <p class="img-caption">Figure 2 — Key screen from the onboarding flow</p>
+      </div>
+
+
+      <!-- ── 19 NEXT PROJECT NAV ────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">19 — Case Study / Next Project Nav</p>
+        <hr class="divider-subtle" style="margin-bottom: 0;">
+        <a href="#" class="case-next">
+          <p class="case-next-label">Next project</p>
+          <h3 class="case-next-title">MB Consulting</h3>
+        </a>
+      </div>
+
+
+      <!-- ── 20 TYPOGRAPHY SCALE ────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">20 — Typography Scale</p>
+        <div style="display: flex; flex-direction: column; gap: 40px;">
+          <div>
+            <p class="cl-item-label">Display / H1 — Libre Baskerville 44px −1%</p>
+            <h1 style="font-family:var(--font-display);font-size:var(--text-h1);font-weight:400;letter-spacing:var(--track-h1);line-height:1.4;color:var(--text-primary);">Shashank Kumar Sinha</h1>
+          </div>
+          <div>
+            <p class="cl-item-label">Display / H2 — Libre Baskerville 32px −0.8%</p>
+            <h2 style="font-family:var(--font-display);font-size:var(--text-h2);font-weight:400;letter-spacing:var(--track-h2);line-height:1.4;color:var(--text-primary);">Learnet Skills F&D Program</h2>
+          </div>
+          <div>
+            <p class="cl-item-label">Section / Heading — Syne 20px 0%</p>
+            <h3 style="font-family:var(--font-section);font-size:var(--text-subhead);font-weight:400;letter-spacing:0;line-height:1.4;color:var(--text-primary);">Projects</h3>
+          </div>
+          <div>
+            <p class="cl-item-label">UI / Subhead — Inter 20px +0.5%</p>
+            <p style="font-family:var(--font-body);font-size:var(--text-subhead);font-weight:400;letter-spacing:var(--track-subhead);line-height:1.4;color:var(--text-secondary);">Brand identity and website design for founders and growing brands.</p>
+          </div>
+          <div>
+            <p class="cl-item-label">UI / Body — Inter 12px +2%</p>
+            <p style="font-family:var(--font-body);font-size:var(--text-body);font-weight:400;letter-spacing:var(--track-body);line-height:1.75;color:var(--text-primary);max-width:65ch;">A multilingual mobile learning platform for women entrepreneurs in India's apparel sector. Full process: field research across six cities, personas, design system, and prototype. The platform was designed for low-end Android devices with limited connectivity.</p>
+          </div>
+          <div>
+            <p class="cl-item-label">UI / CTA — Inter 12px +4%</p>
+            <span style="font-family:var(--font-body);font-size:var(--text-body);font-weight:400;letter-spacing:var(--track-cta);color:var(--interactive);">View case study →</span>
+          </div>
+          <div>
+            <p class="cl-item-label">UI / Overline — Inter Medium 10px +10% uppercase</p>
+            <span style="font-family:var(--font-body);font-size:var(--text-overline);font-weight:500;letter-spacing:var(--track-overline);text-transform:uppercase;color:var(--text-disabled);">Selected Work</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── 21 COLOR TOKENS ────────────────────────────────── -->
+      <div class="cl-section">
+        <p class="cl-label">21 — Color Tokens</p>
+        <div class="cl-row" style="flex-wrap: wrap; gap: 12px;">
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#F7F7F5;border-radius:4px;border:1px solid var(--border-subtle);flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">text/primary</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#F7F7F5</p></div>
+          </div>
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#ADADAA;border-radius:4px;flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">text/secondary</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#ADADAA</p></div>
+          </div>
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#535350;border-radius:4px;flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">text/disabled</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#535350</p></div>
+          </div>
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#111110;border-radius:4px;border:1px solid var(--border-default);flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">background/page</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#111110</p></div>
+          </div>
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#383836;border-radius:4px;flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">background/surface</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#383836</p></div>
+          </div>
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#7A9BE3;border-radius:4px;flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">interactive/default</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#7A9BE3</p></div>
+          </div>
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#A9BFEF;border-radius:4px;flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">interactive/hover</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#A9BFEF</p></div>
+          </div>
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#5378D4;border-radius:4px;flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">interactive/active</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#5378D4</p></div>
+          </div>
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#D170C7;border-radius:4px;flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">accent/default</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#D170C7</p></div>
+          </div>
+          <div class="cl-swatch">
+            <div style="width:40px;height:40px;background:#2C57CA;border-radius:4px;flex-shrink:0;"></div>
+            <div><p style="font-size:10px;color:var(--text-primary);letter-spacing:0.05em;">Brand/logo</p><p style="font-size:10px;color:var(--text-disabled);letter-spacing:0.05em;">#2C57CA</p></div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-copy">© 2026 Shashank Kumar Sinha</span>
+        <a href="mailto:sinha.shashank92@gmail.com" class="footer-email">sinha.shashank92@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

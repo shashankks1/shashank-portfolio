@@ -1,0 +1,200 @@
+/* ── CASE STUDY PAGES ────────────────────────────── */
+
+/* Hero */
+.case-hero {
+  padding: var(--sp-32) 0 var(--sp-16);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.case-hero-back {
+  font-size: var(--text-body);
+  letter-spacing: var(--track-cta);
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-12);
+}
+
+.case-hero-back:hover { color: var(--interactive); }
+
+.case-hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 400;
+  letter-spacing: var(--track-h1);
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-6);
+  max-width: 22ch;
+}
+
+.case-hero-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-subhead);
+  font-weight: 400;
+  letter-spacing: var(--track-subhead);
+  line-height: 1.4;
+  color: var(--text-secondary);
+  max-width: 56ch;
+}
+
+/* Metadata row */
+.meta-row {
+  padding: var(--sp-8) 0;
+  border-top: 1px solid var(--border-subtle);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-6);
+}
+
+/* In the hero the row follows the description; inside the body it follows a paragraph */
+.case-hero .meta-row { margin-top: var(--sp-12); }
+.case-body .meta-row { margin: var(--sp-12) 0; }
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.meta-label {
+  font-size: var(--text-overline);
+  font-weight: 500;
+  letter-spacing: var(--track-overline);
+  text-transform: uppercase;
+  color: var(--text-disabled);
+}
+
+.meta-value {
+  font-size: var(--text-body);
+  letter-spacing: var(--track-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Body */
+.case-body {
+  padding: var(--sp-24) 0;
+}
+
+.case-body p {
+  font-size: var(--text-body);
+  letter-spacing: var(--track-body);
+  color: var(--text-primary);
+  line-height: 1.75;
+  max-width: var(--body-max);
+  margin-bottom: var(--sp-6);
+}
+
+.case-body h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  letter-spacing: var(--track-h2);
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-top: var(--sp-16);
+  margin-bottom: var(--sp-6);
+}
+
+.case-body h3 {
+  font-family: var(--font-section);
+  font-size: var(--text-subhead);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-top: var(--sp-12);
+  margin-bottom: var(--sp-4);
+}
+
+.case-body code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+/* Pull quote */
+.pull-quote {
+  border-left: 2px solid var(--interactive);
+  padding-left: var(--sp-6);
+  margin: var(--sp-12) 0;
+  font-family: var(--font-body);
+  font-size: var(--text-subhead);
+  font-weight: 400;
+  letter-spacing: var(--track-subhead);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 48ch;
+}
+
+/* Images — surface and radius sit on the image itself, so a caption
+   below it stays on the page background instead of a grey slab */
+.case-img-full {
+  margin: var(--sp-16) 0;
+}
+
+.case-img-offset {
+  margin: var(--sp-16) 0 var(--sp-16) 35%;
+}
+
+.case-img-full img,
+.case-img-offset img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  background: var(--bg-surface);
+}
+
+.img-caption {
+  font-size: var(--text-body);
+  letter-spacing: var(--track-body);
+  color: var(--text-disabled);
+  margin-top: var(--sp-3);
+  line-height: 1.6;
+  max-width: var(--body-max);
+}
+
+/* Next project navigation */
+.case-next {
+  padding: var(--sp-16) 0;
+  border-top: 1px solid var(--border-subtle);
+  display: inline-block;
+}
+
+.case-next-label {
+  font-size: var(--text-overline);
+  font-weight: 500;
+  letter-spacing: var(--track-overline);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-3);
+}
+
+.case-next-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  letter-spacing: var(--track-h2);
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.case-next:hover .case-next-title { color: var(--interactive); }
+
+/* Scope disclaimer */
+.scope-note {
+  font-size: var(--text-body);
+  letter-spacing: var(--track-body);
+  color: var(--text-disabled);
+  line-height: 1.75;
+  max-width: var(--body-max);
+  margin-top: var(--sp-12);
+  padding-top: var(--sp-8);
+  border-top: 1px solid var(--border-subtle);
+}

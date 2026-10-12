@@ -1,0 +1,42 @@
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --text-h1: 2.25rem;  /* 36px on mobile */
+    --text-h2: 1.5rem;   /* 24px on mobile */
+  }
+
+  .container { padding: 0 var(--sp-6); }
+
+  .project-featured {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+
+  .projects-secondary { grid-template-columns: 1fr; }
+
+  .project-secondary:first-child {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: var(--sp-8);
+  }
+
+  .project-secondary:last-child { padding-left: 0; }
+
+  .work-index-row {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+
+  .work-index-row .tags { justify-content: flex-start; }
+
+  .meta-row { grid-template-columns: 1fr 1fr; }
+
+  .case-img-offset { margin-left: 0; }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: var(--sp-3);
+    align-items: flex-start;
+  }
+}
