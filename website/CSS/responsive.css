@@ -12,6 +12,8 @@
     gap: var(--sp-6);
   }
 
+  .project-featured--reverse .project-featured-image { order: 0; }
+
   .projects-secondary { grid-template-columns: 1fr; }
 
   .project-secondary:first-child {

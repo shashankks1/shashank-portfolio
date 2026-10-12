@@ -25,10 +25,11 @@ async function grid(rows, { width = W, gap = 24, pad = 0, bg = '#111110' } = {})
   for (const row of rows) {
     const metas = await Promise.all(row.map(async f => sharp(f, { limitInputPixels: false }).metadata()));
     const inner = width - 2 * pad - gap * (row.length - 1);
-    const h = Math.round(inner / metas.reduce((a, m) => a + m.width / m.height, 0));
+    const h = Math.floor(inner / metas.reduce((a, m) => a + m.width / m.height, 0));
     let x = pad;
     for (const [i, f] of row.entries()) {
-      const w = Math.round(h * metas[i].width / metas[i].height);
+      // never let rounding push the last image past the canvas edge
+      const w = Math.min(Math.round(h * metas[i].width / metas[i].height), width - pad - x);
       placed.push({ input: await sharp(f, { limitInputPixels: false }).resize(w, h).toBuffer(), left: x, top: y });
       x += w + gap;
     }
@@ -115,10 +116,17 @@ const fit = (f, w) => sharp(f, { limitInputPixels: false }).resize({ width: w, w
   await save(fit(`${CP}/PROJECT PORTFOLIO PRESENTATION/3d logo CENTER.jpg`, W), d, 'cover');
   await save(await grid([[S('hi/copo-options-01.png'), S('hi/copo-options-02.png')], [S('hi/copo-options-03.png'), S('hi/copo-options-04.png')]], { gap: 16 }), d, 'logo-options');
   await save(await grid([[S('hi/copo-final-01.png'), S('hi/copo-final-02.png'), S('hi/copo-final-03.png')]], { gap: 24, pad: 0, bg: '#ffffff' }), d, 'final-mark');
+  // Manual page 10 is used as copo-manual-10r: the owner's name is whited out of the sample letter.
+  // Page 11 (business card) is never used — it carries the owner's phone and email.
   await save(await grid([[S('hi/copo-manual-03.png'), S('hi/copo-manual-04.png'), S('hi/copo-manual-05.png'), S('hi/copo-manual-06.png')],
-    [S('hi/copo-manual-07.png'), S('hi/copo-manual-08.png'), S('hi/copo-manual-10.png'), S('hi/copo-manual-13.png')]], { gap: 24, pad: 24, bg: '#E9E8E4' }), d, 'logo-manual');
-  await save(fit(`${CP}/BEHANCE UPLOAD/001.png`, 1600), d, 'social');
-  const A = 'D:/PORTFOLIO/assets/portfolio-latest/Shashank portfolio website/website/Asset';
-  await save(await grid([[`${A}/VISITING CARD R copy.jpg`, `${A}/LETTERHEAD copy.jpg`], [`${A}/TAGS BEAUTY copy.jpg`, `${A}/STICKER BEAUTY copy.jpg`]], { gap: 16 }), d, 'collateral');
+    [S('hi/copo-manual-07.png'), S('hi/copo-manual-08.png'), S('hi/copo-manual-10r.png'), S('hi/copo-manual-13.png')]], { gap: 24, pad: 24, bg: '#E9E8E4' }), d, 'logo-manual');
+  await save(fit(S('grabs/copo-palette.png'), W), d, 'palette');
+  const R = `${CP}/PROJECT PORTFOLIO PRESENTATION`;
+  // Shashank's Cinema 4D renders, laid out the way his earlier COPO page planned them.
+  await save(await grid([[`${R}/VISITING CARD BEAUTY FINAL.jpg`, `${R}/TAGS BEAUTY.tif`, `${R}/STICKER.tif`]], { width: 1600, gap: 16 }), d, 'renders');
+  await save(sharp(`${R}/LETTERHEAD.tif`), d, 'letterhead');
+  await save(await grid([[S('hi/copo-banner-01.png')], [S('hi/copo-banner-02.png')]], { gap: 16 }), d, 'banners');
+  // Not used any more: the Instagram mockup (its post grid shows real customers) — delete if present.
+  for (const old of ['social', 'collateral', 'mark-render']) fs.rmSync(`${SITE}/${d}/${old}.webp`, { force: true });
 }
 console.log('done');

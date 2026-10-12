@@ -23,7 +23,17 @@ node pdfpages.mjs "D:/PORTFOLIO/assets/portfolio-latest/Learnet/Case study prese
 node pdfpages.mjs "D:/CREATIVE/Explorations/EXPLORATIONS-WORKS/WORK/COPO BRANDING/DRAFT/COLLATERALS/Logo manual.pdf" hi/copo-manual 3-14 2
 node pdfpages.mjs "D:/CREATIVE/Explorations/EXPLORATIONS-WORKS/WORK/COPO BRANDING/DRAFT/ASSETS/COPO - LOGO OPTIONS..pdf" hi/copo-options all 2
 node pdfpages.mjs "D:/CREATIVE/Explorations/EXPLORATIONS-WORKS/WORK/COPO BRANDING/DRAFT/FINAL DELIVERABLES/LOGO FINAL.pdf" hi/copo-final all 2
+node pdfpages.mjs "D:/CREATIVE/Explorations/EXPLORATIONS-WORKS/WORK/COPO BRANDING/DRAFT/ASSETS/1x/Banner copy.pdf" hi/copo-banner all 1
+node grab.mjs copo-palette.html 1180 '[{"sel":".board","out":"grabs/copo-palette.png"}]'
+# White out the owner's name on the manual's sample letter (page 10) -> hi/copo-manual-10r.png:
+node -e "const s=require('module').createRequire('D:/VISTOFY/60-Tools/package.json')('sharp');s('hi/copo-manual-10.png').composite([{input:Buffer.from('<svg width=\"240\" height=\"80\"><rect width=\"240\" height=\"80\" fill=\"#fff\"/></svg>'),left:205,top:1022}]).toFile('hi/copo-manual-10r.png')"
 node build-images.mjs
 ```
+
+Privacy rules baked in:
+- Learnet research pages are cropped so no participant names show.
+- COPO manual page 10 has the owner's name whited out. Page 11 (her phone and email) is never used.
+- The COPO Instagram mockup is not used, because its post grid shows real customers.
+- `pdftext.mjs <pdf>` prints a PDF's text, which is how the COPO rationale (the Kopou story, the neon options) was read.
 
 The Learnet research pages are cropped 500 px from the left on purpose, because that column quotes real participants by name.

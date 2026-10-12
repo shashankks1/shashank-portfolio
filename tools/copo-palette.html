@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #F4EFE8; font-family: Inter, sans-serif; color: #1A121C; }
+  .board { width: 1180px; padding: 56px 64px; box-sizing: border-box; }
+  .row { display: grid; grid-template-columns: 220px repeat(4, 1fr); gap: 20px; align-items: start; }
+  .row + .row { margin-top: 48px; padding-top: 48px; border-top: 1px solid #DCD3C8; }
+  .label { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #6E6470; padding-top: 6px; line-height: 1.6; }
+  .label b { display: block; font-weight: 500; color: #1A121C; text-transform: none; letter-spacing: 0; font-size: 18px; margin-bottom: 6px; }
+  .sw { height: 150px; border-radius: 8px; }
+  .hex { font-size: 15px; margin-top: 12px; font-weight: 500; }
+  .pms { font-size: 13px; color: #6E6470; margin-top: 2px; }
+  .faded .sw { }
+</style></head><body>
+<div class="board">
+  <div class="row">
+    <div class="label"><b>First options</b>Neon · Edensor / New York + Montserrat</div>
+    <div><div class="sw" style="background:#E43180"></div><div class="hex">#E43180</div></div>
+    <div><div class="sw" style="background:#FFD834"></div><div class="hex">#FFD834</div></div>
+    <div><div class="sw" style="background:#F15F3E"></div><div class="hex">#F15F3E</div></div>
+    <div><div class="sw" style="background:#6BBE45"></div><div class="hex">#6BBE45</div></div>
+  </div>
+  <div class="row">
+    <div class="label"><b>Final identity</b>Plum · Noto Sans</div>
+    <div><div class="sw" style="background:#642667"></div><div class="hex">#642667</div><div class="pms">Pantone 260 C</div></div>
+    <div><div class="sw" style="background:#E4B9CF"></div><div class="hex">#E4B9CF</div><div class="pms">Pantone P 80-1 C</div></div>
+    <div><div class="sw" style="background:#214C3D"></div><div class="hex">#214C3D</div><div class="pms">Pantone 567 C</div></div>
+    <div><div class="sw" style="background:#000000"></div><div class="hex">#000000</div><div class="pms">Black</div></div>
+  </div>
+</div>
+</body></html>

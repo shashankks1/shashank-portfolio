@@ -56,6 +56,11 @@
   display: block;
 }
 
+/* Mirrored featured project: image on the right, keeps the page asymmetric */
+.project-featured--reverse .project-featured-image { order: 2; }
+
+.projects-secondary + .project-featured { margin-top: var(--sp-16); }
+
 .project-featured-title {
   font-family: var(--font-display);
   font-size: var(--text-h2);
