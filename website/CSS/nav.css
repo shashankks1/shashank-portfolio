@@ -8,7 +8,7 @@
 }
 
 /* Wider and taller, laid on the same 12-column ledger as the pages (review comment 2026-10-14):
-   mark in the label column, nav where content starts.
+   mark in the label column, links in the right corner.
    Shares the page container, so the mark always lines up with the content edge. */
 
 .site-header-inner {
@@ -33,7 +33,7 @@
 
 .site-header-role { display: none; }   /* v2 element, retired */
 
-.site-nav { grid-column: 4 / 10; }
+.site-nav { grid-column: 4 / 13; justify-self: end; }   /* links in the right corner (review comment) */
 .nav-links { display: flex; gap: var(--sp-12); }
 
 .nav-links a {
