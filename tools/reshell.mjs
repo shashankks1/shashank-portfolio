@@ -14,7 +14,6 @@ const header = (p, current) => `  <!-- ── HEADER ── -->
     <div class="container site-header-inner">
       <a href="${p}index.html" class="brand" aria-label="Shashank Kumar Sinha — home">
         ${MARK52}
-        <span>Shashank Kumar Sinha</span>
       </a>
       <nav class="site-nav" aria-label="Main">
         <ul class="nav-links">
