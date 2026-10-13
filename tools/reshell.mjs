@@ -22,6 +22,7 @@ const header = (p, current) => `  <!-- ── HEADER ── -->
           <li><a href="${p}index.html#contact">Contact</a></li>
         </ul>
       </nav>
+      <p class="site-status"><span class="dot" aria-hidden="true"></span>Open to roles</p>
     </div>
   </header>`;
 

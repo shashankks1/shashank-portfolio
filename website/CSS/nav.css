@@ -7,31 +7,40 @@
   border-bottom: 1px solid var(--rule);
 }
 
+/* Wider and taller, laid on the same 12-column ledger as the pages (review comment 2026-10-14):
+   mark in the label column, nav where content starts, status at the right edge.
+   Shares the page container, so the mark always lines up with the content edge. */
+
 .site-header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
   align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-6);
   height: var(--header-h);
 }
 
 .brand {
+  grid-column: 1 / 4;
+  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 12px;
   color: var(--sks-blue);
 }
 
-.brand svg { width: 40px; height: auto; flex-shrink: 0; }   /* the 52 drawing, shown at 40px */
+.brand svg { width: 52px; height: auto; flex-shrink: 0; }   /* the 52 drawing at its own size */
 .brand span { color: var(--ink); font-weight: 500; font-size: 0.9375rem; }
 
 .site-header-role { display: none; }   /* v2 element, retired */
 
-.nav-links { display: flex; gap: var(--sp-8); }
+.site-nav { grid-column: 4 / 10; }
+.nav-links { display: flex; gap: var(--sp-12); }
+
+.site-status { grid-column: 10 / 13; justify-self: end; font-size: var(--t-small); color: var(--ink-2); white-space: nowrap; }
 
 .nav-links a {
   position: relative;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--ink);
   padding-bottom: 2px;

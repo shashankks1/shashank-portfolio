@@ -37,11 +37,11 @@
   --sp-8: 32px; --sp-12: 48px; --sp-16: 64px; --sp-24: 96px; --sp-32: 128px;
 
   /* Layout — 12 columns you feel, not see */
-  --max:    1320px;
+  --max:    1760px;   /* widened with the header, 2026-10-14 */
   --gutter: clamp(20px, 4vw, 56px);
   --gap:    clamp(16px, 2vw, 32px);
   --measure: 65ch;
-  --header-h: 64px;
+  --header-h: 88px;
 
   /* The arrow and the seam, drawn at the mark's angle with its round ends */
   --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 12.5 L12.5 3.5 M6 3.5 H12.5 V10' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
