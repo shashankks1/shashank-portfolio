@@ -30,5 +30,4 @@
   .nav-links { gap: var(--sp-6); }
   .meta-row { grid-template-columns: 1fr 1fr; }
   .facts div { grid-template-columns: 6rem 1fr; }
-  .work .seam { margin: var(--sp-12) 0; }
 }

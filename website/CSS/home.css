@@ -35,7 +35,7 @@
 .work { padding-top: var(--sp-16); }
 
 /* ── WORK ────────────────────────────────────────── */
-.work { padding-bottom: var(--sp-16); }
+.work { padding-bottom: var(--sp-8); }
 
 .proj {
   display: grid;
@@ -69,11 +69,12 @@
 .proj-info .project-link { margin-top: var(--sp-2); align-self: flex-start; }
 .proj:hover .h2 { color: var(--sks-deep); }
 
-.work .seam { margin: var(--sp-16) 0; }
+/* No dividers between projects (review comment 2026-10-13): space alone separates them */
+.proj + .proj { margin-top: clamp(96px, 11vw, 168px); }
 
 /* ── ABOUT PULL + CONTACT — same ledger, same voice ── */
 .about-pull,
-.contact { padding: var(--sp-16) 0; }
+.contact { padding: clamp(96px, 11vw, 168px) 0 var(--sp-16); }
 
 .ledger-row {
   display: grid;

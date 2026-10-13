@@ -4,7 +4,7 @@
 .about-title { max-width: 18ch; }
 
 /* The thread — career path drawn with the mark's stroke: runs + 45° risers */
-.thread { padding: var(--sp-8) 0 var(--sp-16); }
+.thread { padding: var(--sp-8) 0 clamp(64px, 8vw, 120px); }
 .thread svg { width: 100%; height: auto; overflow: visible; }
 .thread .line { fill: none; stroke: var(--sks-blue); stroke-width: var(--stroke-bold); stroke-linecap: round; stroke-linejoin: round; }
 .thread .node { fill: var(--paper); stroke: var(--sks-blue); stroke-width: 3; }

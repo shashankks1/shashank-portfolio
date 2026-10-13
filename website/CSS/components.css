@@ -85,12 +85,6 @@
 .divider { height: 1px; background: var(--rule); border: 0; }
 .divider-subtle { height: 1px; background: var(--rule); border: 0; }
 
-/* The seam — a running stitch between projects and major sections */
-.seam {
-  height: 4px;
-  border: 0;
-  background: var(--stitch) repeat-x left center;
-}
 
 /* ── SECTION HEAD — the CV ledger: label left, heading right ── */
 .section-head {
