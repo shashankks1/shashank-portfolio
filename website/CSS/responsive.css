@@ -2,7 +2,6 @@
 
 /* Tablet and down: the ledger folds into one column */
 @media (max-width: 900px) {
-  .hero-mark { grid-column: 1 / 8; }
   .hero-text { grid-column: 1 / -1; }
 
   .proj-media, .proj-info { grid-column: 1 / -1; }
