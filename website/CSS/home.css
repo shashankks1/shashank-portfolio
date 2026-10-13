@@ -95,16 +95,28 @@
   max-width: 34ch;
 }
 
+/* Link-sized, in the accent (review comment 2026-10-14) */
 .contact-email {
-  font-family: var(--serif);
-  font-size: var(--t-h1);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.4;
   color: var(--sks-blue);
-  text-decoration: underline;
-  text-decoration-thickness: var(--stroke);
-  text-underline-offset: 0.18em;
+  padding-bottom: 3px;
   word-break: break-word;
+}
+
+.contact-email::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: var(--stroke);
+  width: 100%;
+  border-radius: 2px;
+  background: currentColor;
 }
 
 .contact-email:hover { color: var(--sks-deep); }
