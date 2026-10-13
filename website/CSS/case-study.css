@@ -5,35 +5,32 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
-  font-size: var(--fs-mono);
-  letter-spacing: var(--track-mono);
-  text-transform: uppercase;
+  font-size: var(--t-small);
+  font-weight: 500;
   color: var(--ink-2);
-  margin-bottom: var(--sp-16);
+  margin-bottom: var(--sp-12);
 }
 
-.case-hero-back:hover { color: var(--accent-ink); }
+.case-hero-back:hover { color: var(--sks-blue); }
 
 .case-hero-title {
-  font-family: var(--font-serif);
+  font-family: var(--serif);
   font-weight: 400;
-  font-size: var(--fs-xxl);
-  line-height: var(--lh-tight);
+  font-size: var(--t-h1);
+  line-height: 1.12;
   letter-spacing: -0.02em;
-  max-width: 16ch;
-  margin-bottom: var(--sp-8);
+  color: var(--sks-blue);
+  max-width: 24ch;
+  margin-bottom: var(--sp-6);
 }
 
 .case-hero-desc {
-  font-size: var(--fs-m);
-  line-height: 1.45;
-  letter-spacing: -0.005em;
-  color: var(--ink);
-  max-width: 44ch;
+  font-size: var(--t-lead);
+  line-height: 1.5;
+  max-width: 48ch;
 }
 
-/* Metadata — a four-column fact table under a strong rule */
+/* Metadata — the CV's label-over-value, four across */
 .meta-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -43,34 +40,22 @@
   border-top: 1px solid var(--rule);
 }
 
-.case-hero .meta-row { margin-top: var(--sp-16); }
+.case-hero .meta-row { margin-top: var(--sp-12); }
 
-.meta-item { display: flex; flex-direction: column; gap: var(--sp-2); }
+.meta-item { display: flex; flex-direction: column; gap: var(--sp-1); }
 
 .meta-label {
-  font-family: var(--font-mono);
-  font-size: var(--fs-mono);
-  letter-spacing: var(--track-mono);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-2);
+  color: var(--sks-deep);
 }
 
 .meta-value { font-size: 0.9375rem; line-height: 1.5; }
 
-/* Inside the body the same row becomes a figures strip: big serif numbers */
-.case-body > .container > .meta-row { grid-column: 4 / -1; margin: var(--sp-8) 0; }
-.case-body .meta-value {
-  font-family: var(--font-serif);
-  font-size: var(--fs-l);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-
-/* ── CASE STUDY — BODY: 12-column editorial grid ─── */
-.case-body {
-  padding: var(--sp-8) 0 var(--sp-24);
-  counter-reset: section figure;
-}
+/* ── CASE STUDY — BODY: the CV ledger ────────────── */
+.case-body { padding: var(--sp-8) 0 var(--sp-16); }
 
 .case-body > .container {
   display: grid;
@@ -79,7 +64,7 @@
   align-items: start;
 }
 
-/* Default: everything reads in columns 4–10 */
+/* Reading column */
 .case-body > .container > * { grid-column: 4 / 11; }
 
 .case-body p {
@@ -87,161 +72,150 @@
   margin-bottom: var(--sp-6);
 }
 
-/* Section heading sits in columns 1–3, beside its first paragraph */
-.case-body > .container > h2 { grid-column: 1 / 4; }
-.case-body h2 {
+/* Section heading — the left column, beside its first paragraph */
+.case-body > .container > h2 {
   grid-column: 1 / 4;
-  font-family: var(--font-serif);
+  font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(1.5rem, 2.1vw, 2rem);
-  line-height: 1.15;
+  font-size: var(--t-h3);
+  line-height: 1.3;
   letter-spacing: -0.005em;
-  padding-top: var(--sp-4);
+  color: var(--sks-blue);
   margin-top: var(--sp-16);
+  padding-top: var(--sp-4);
   padding-right: var(--sp-6);
-  border-top: 1px solid var(--rule);
+  border-top: var(--stroke) solid var(--sks-blue);
 }
 
-.case-body h2 + * { margin-top: var(--sp-16); padding-top: calc(var(--sp-4) + 1px); }
-
-.case-body h2::before {
-  counter-increment: section;
-  content: counter(section, decimal-leading-zero);
-  display: block;
-  font-family: var(--font-mono);
-  font-size: var(--fs-mono);
-  letter-spacing: var(--track-mono);
-  color: var(--accent-ink);
-  margin-bottom: var(--sp-3);
-}
+.case-body > .container > h2 + * { margin-top: var(--sp-16); padding-top: calc(var(--sp-4) + var(--stroke)); }
 
 .case-body h3 {
+  font-family: var(--sans);
   font-weight: 600;
   font-size: 1.0625rem;
-  letter-spacing: -0.01em;
   margin: var(--sp-6) 0 var(--sp-3);
 }
 
 .case-body code {
-  font-family: var(--font-mono);
-  font-size: 0.875em;
-  background: var(--paper-raised);
+  font-size: 0.9em;
+  background: var(--surface);
   padding: 1px 5px;
-  border: 1px solid var(--rule-soft);
+  border-radius: 4px;
 }
 
-.case-body em { font-style: italic; }
-
-/* Pull quote — serif, an orange opening mark, wider than the text column */
+/* Pull quote — Baskerville italic in blue, opened by the mark's 45° stroke */
 .pull-quote {
-  grid-column: 4 / 12 !important;
-  font-family: var(--font-serif);
-  font-size: var(--fs-l);
-  line-height: 1.2;
-  letter-spacing: -0.005em;
-  margin: var(--sp-8) 0 var(--sp-12);
-  max-width: 30ch;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: var(--sp-4);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  line-height: 1.35;
+  color: var(--sks-blue);
+  max-width: 36ch;
+  margin: var(--sp-6) 0 var(--sp-12);
 }
 
 .pull-quote::before {
-  content: '“';
-  display: block;
-  font-size: 2.2em;
-  line-height: 0.6;
-  height: 0.4em;
-  color: var(--accent);
+  content: '';
+  width: 24px;
+  height: 24px;
+  margin-top: 6px;
+  background: var(--tick) center / contain no-repeat;
 }
 
-/* Figures — full width or offset to the text column; mono numbered captions */
+/* Figures — full width, or offset to the reading column. Square, like the grid. */
 .case-img-full,
 .case-img-offset { margin: var(--sp-12) 0; }
 
 .case-body > .container > .case-img-full { grid-column: 1 / -1; }
 .case-body > .container > .case-img-offset { grid-column: 4 / -1; }
+.case-body > .container > .case-img-offset--narrow { grid-column: 4 / 8; }
 
 .case-img-full img,
 .case-img-offset img {
   width: 100%;
   height: auto;
   display: block;
-  background: var(--paper-raised);
-  outline: 1px solid var(--rule-soft);
-  outline-offset: -1px;
+  background: var(--surface);
 }
 
 .img-caption {
-  counter-increment: figure;
-  display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: var(--sp-3);
-  font-size: var(--fs-small);
+  font-size: var(--t-small);
   line-height: 1.55;
   color: var(--ink-2);
   margin-top: var(--sp-3);
-  max-width: calc(var(--measure) + 6rem);
-}
-
-.img-caption::before {
-  content: 'Fig. ' counter(figure, decimal-leading-zero);
-  font-family: var(--font-mono);
-  font-size: var(--fs-mono);
-  letter-spacing: var(--track-mono);
-  text-transform: uppercase;
-  color: var(--ink);
-  padding-top: 2px;
+  max-width: 60ch;
 }
 
 /* A hero image placed straight in <main> (MB Consulting) runs full bleed */
 main > .case-img-full { margin: 0 0 var(--sp-8); }
-main > .case-img-full img { outline: none; border-bottom: 1px solid var(--rule); }
 
-/* Credits / scope — the honest line about who did what */
+/* Figures strip — the same meta row, with Baskerville numbers */
+.case-body > .container > .meta-row { grid-column: 4 / -1; margin: var(--sp-6) 0 var(--sp-12); }
+.case-body .meta-value {
+  font-family: var(--serif);
+  font-size: var(--t-h2);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--sks-blue);
+}
+
+/* Credits — who did what, said plainly */
 .scope-note {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  line-height: 1.7;
+  font-size: var(--t-small);
+  line-height: 1.65;
   color: var(--ink-2);
   margin-top: var(--sp-12);
   padding-top: var(--sp-4);
   border-top: 1px solid var(--rule);
-  max-width: var(--measure);
 }
 
 .scope-note::before {
   content: 'Credits & scope';
   display: block;
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: var(--track-mono);
-  font-size: var(--fs-mono);
-  color: var(--ink);
+  color: var(--sks-deep);
   margin-bottom: var(--sp-2);
 }
 
 /* ── NEXT PROJECT ────────────────────────────────── */
 .case-next {
   display: block;
-  padding: var(--sp-6) 0 var(--sp-24);
-  border-top: 1px solid var(--rule);
+  padding: var(--sp-8) 0 var(--sp-24);
 }
 
 .case-next-label {
-  font-family: var(--font-mono);
-  font-size: var(--fs-mono);
-  letter-spacing: var(--track-mono);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-2);
-  margin-bottom: var(--sp-6);
+  color: var(--sks-deep);
+  margin-bottom: var(--sp-4);
 }
 
 .case-next-title {
-  font-family: var(--font-serif);
-  font-size: var(--fs-xxl);
-  line-height: var(--lh-tight);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: var(--serif);
+  font-size: var(--t-h1);
+  line-height: 1.12;
   letter-spacing: -0.02em;
+  color: var(--sks-blue);
 }
 
-.case-next:hover .case-next-title { color: var(--accent-ink); }
+.case-next-title::after {
+  content: '';
+  width: 0.6em;
+  height: 0.6em;
+  background: currentColor;
+  -webkit-mask: var(--arrow) center / contain no-repeat;
+          mask: var(--arrow) center / contain no-repeat;
+}
 
-/* Narrow figure — tall phone screenshots shouldn't fill the page */
-.case-body > .container > .case-img-offset--narrow { grid-column: 4 / 8; }
-@media (max-width: 720px) { .case-body > .container > .case-img-offset--narrow { grid-column: 1 / -1 !important; } }
+.case-next:hover .case-next-title { color: var(--sks-deep); }
