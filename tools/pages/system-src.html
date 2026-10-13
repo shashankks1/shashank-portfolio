@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="none" data-seam="stitch" data-paper="cotton">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Design System v3 — proposal · Shashank Kumar Sinha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── v3 TOKENS — drawn from the SKS mark, the CV, the brief ── */
+    :root {
+      --sks-blue: #2C57CA;      /* LOGO.svg fill */
+      --sks-deep: #163A9A;      /* CV headings / labels, darker */
+      --sks-wash: #E7EDFB;      /* selection, highlight */
+      --ink:      #111A33;      /* blue-black text — 15.9:1 on cotton */
+      --ink-2:    #4A5068;      /* secondary text — 7.2:1 */
+      --rule:     rgba(17, 26, 51, 0.16);
+      --paper:    #F6F4EE;      /* cotton */
+      --surface:  #ECE8DF;      /* greige */
+      --accent2:  var(--sks-blue);
+
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+      /* Type — major-third scale from a 17px body; tracking corrected by size, like the mark */
+      --t-display: clamp(2.5rem, 5vw, 4.5rem);
+      --t-h1:      clamp(2rem, 3.4vw, 3.125rem);
+      --t-h2:      clamp(1.5rem, 2.3vw, 2.125rem);
+      --t-h3:      1.3125rem;
+      --t-lead:    clamp(1.125rem, 1.45vw, 1.3125rem);
+      --t-body:    1.0625rem;
+      --t-small:   0.875rem;
+      --t-label:   0.75rem;
+
+      /* The stroke — one weight, round caps */
+      --stroke: 2px;
+      --stroke-bold: 6px;
+
+      --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px;
+      --sp-8: 32px; --sp-12: 48px; --sp-16: 64px; --sp-24: 96px; --sp-32: 128px;
+
+      --max: 1320px;
+      --gutter: clamp(20px, 4vw, 56px);
+      --gap: clamp(16px, 2vw, 32px);
+    }
+    html[data-accent="magenta"] { --accent2: #C2369F; }  /* CV contact pink */
+    html[data-accent="orange"]  { --accent2: #E8601C; }  /* brief: rich orange */
+    html[data-paper="white"]    { --paper: #FFFFFF; --surface: #F1F1EE; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    ul, ol { list-style: none; }
+
+    body {
+      font-family: var(--sans);
+      font-size: var(--t-body);
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--sks-wash); }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
+
+    /* ── TYPE ROLES ── */
+    .display, .h1, .h2, .h3 { font-family: var(--serif); font-weight: 400; color: var(--sks-blue); }
+    .display { font-size: var(--t-display); line-height: 1.08; letter-spacing: -0.025em; }
+    .h1 { font-size: var(--t-h1); line-height: 1.12; letter-spacing: -0.02em; }
+    .h2 { font-size: var(--t-h2); line-height: 1.2;  letter-spacing: -0.015em; }
+    .h3 { font-size: var(--t-h3); line-height: 1.3;  letter-spacing: -0.005em; }
+    .lead { font-size: var(--t-lead); line-height: 1.5; color: var(--ink); max-width: 46ch; }
+    .body { max-width: 65ch; }
+    .small { font-size: var(--t-small); line-height: 1.55; color: var(--ink-2); }
+    /* Label — straight from the CV: bold caps, deep blue */
+    .label { font-family: var(--sans); font-size: var(--t-label); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sks-deep); }
+    em, .italic { font-family: var(--serif); font-style: italic; }
+
+    /* ── THE STROKE ── */
+    .rule { height: 1px; background: var(--rule); border: 0; }
+    .stroke { height: var(--stroke); border-radius: var(--stroke); background: var(--sks-blue); border: 0; }
+    .seam { height: 4px; border: 0; margin: var(--sp-16) 0; }
+    html[data-seam="stitch"] .seam {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='4'%3E%3Cline x1='2' y1='2' x2='10' y2='2' stroke='%232C57CA' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center;
+    }
+    html[data-seam="line"] .seam { height: var(--stroke); background: var(--sks-blue); border-radius: 2px; }
+
+    .arrow { display: inline-block; width: 0.8em; height: 0.8em; vertical-align: -0.02em; margin-left: 0.3em; }
+    .arrow path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Link — the one transition: an underline drawn in from the left */
+    .link { color: var(--sks-blue); text-decoration: none; font-weight: 500; position: relative; }
+    .link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: var(--stroke); width: 0; border-radius: 2px; background: currentColor; transition: width .2s ease; }
+    .link:hover::after { width: 100%; }
+
+    /* Pressable things end like the mark's strokes: round */
+    .btn { display: inline-flex; align-items: center; gap: 6px; font: 500 0.9375rem/1 var(--sans); padding: 14px 22px; border-radius: 999px; border: var(--stroke) solid var(--sks-blue); text-decoration: none; cursor: pointer; }
+    .btn-primary { background: var(--sks-blue); color: #fff; }
+    .btn-primary:hover { background: var(--sks-deep); border-color: var(--sks-deep); }
+    .btn-secondary { background: transparent; color: var(--sks-blue); }
+    .btn-secondary:hover { background: var(--sks-wash); }
+    .tag { display: inline-flex; align-items: center; font: 500 0.8125rem/1 var(--sans); padding: 7px 12px; border-radius: 999px; border: 1.5px solid var(--rule); color: var(--ink-2); }
+    .tag--on { border-color: var(--sks-blue); color: var(--sks-blue); }
+    .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent2); margin-right: 8px; }
+
+    /* Images and the grid stay square — hard meets soft */
+    .frame { background: var(--surface); }
+    .frame img { width: 100%; height: auto; }
+    .caption { margin-top: var(--sp-3); font-size: var(--t-small); color: var(--ink-2); max-width: 60ch; }
+
+    /* ── SPECIMEN CHROME ── */
+    .top { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--rule); }
+    .top-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-6); min-height: 64px; flex-wrap: wrap; padding: 10px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--sks-blue); text-decoration: none; }
+    .brand svg { width: 40px; height: auto; }
+    .brand span { font-weight: 500; color: var(--ink); font-size: 0.9375rem; }
+    .switches { display: flex; gap: var(--sp-6); flex-wrap: wrap; }
+    .switch { display: flex; align-items: center; gap: 6px; font-size: 0.8125rem; color: var(--ink-2); }
+    .switch button { font: 500 0.8125rem/1 var(--sans); padding: 6px 10px; border-radius: 999px; border: 1.5px solid var(--rule); background: transparent; color: var(--ink-2); cursor: pointer; }
+    .switch button[aria-pressed="true"] { border-color: var(--sks-blue); background: var(--sks-blue); color: #fff; }
+
+    section.block { padding: var(--sp-24) 0 var(--sp-8); }
+    .block-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); margin-bottom: var(--sp-12); }
+    .block-head .label { grid-column: 1 / 4; padding-top: 0.6em; }
+    .block-head > div { grid-column: 4 / 12; }
+    .block-head .h1 { margin-bottom: var(--sp-4); }
+    .src { display: inline-block; font-size: 0.75rem; color: var(--ink-2); border-left: var(--stroke) solid var(--sks-blue); padding-left: 8px; margin-top: var(--sp-2); }
+
+    /* Mark study */
+    .mark-study { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: var(--sp-12); align-items: center; }
+    .mark-big { grid-column: 1 / 7; color: var(--sks-blue); position: relative; }
+    .mark-big svg { width: 100%; height: auto; }
+    .traits { grid-column: 8 / 13; display: grid; gap: 0; }
+    .trait { display: grid; grid-template-columns: 2.2rem 1fr; gap: var(--sp-3); padding: var(--sp-4) 0; border-top: 1px solid var(--rule); }
+    .trait:last-child { border-bottom: 1px solid var(--rule); }
+    .trait svg { width: 28px; height: 28px; color: var(--sks-blue); margin-top: 2px; }
+    .trait b { display: block; font-weight: 600; font-size: 0.9375rem; }
+    .trait p { font-size: 0.9375rem; color: var(--ink-2); line-height: 1.5; }
+    .ladder { grid-column: 1 / -1; display: flex; align-items: flex-end; gap: var(--sp-12); color: var(--sks-blue); flex-wrap: wrap; }
+    .ladder figure { display: flex; flex-direction: column; gap: var(--sp-3); }
+    .ladder svg { height: 96px; width: auto; }
+    .ladder figcaption { font-size: 0.75rem; color: var(--ink-2); }
+
+    /* Colour */
+    .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); }
+    .sw-chip { height: 120px; border: 1px solid var(--rule); }
+    .sw b { display: block; margin-top: var(--sp-3); font-weight: 600; font-size: 0.9375rem; }
+    .sw code { font: 500 0.8125rem/1.4 var(--sans); color: var(--ink-2); }
+    .sw p { font-size: 0.8125rem; color: var(--ink-2); line-height: 1.45; margin-top: 4px; }
+    .acc-chip { background: var(--accent2); }
+    html[data-accent="none"] .acc-chip { background: repeating-linear-gradient(45deg, var(--paper) 0 7px, var(--rule) 7px 9px); }
+    .share { display: flex; height: 40px; margin-top: var(--sp-12); border: 1px solid var(--rule); }
+    .share div { display: flex; align-items: center; padding-left: 10px; font-size: 0.75rem; font-weight: 500; }
+
+    /* Type specimen */
+    .type-rows { border-top: 1px solid var(--rule); }
+    .type-row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding: var(--sp-6) 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+    .type-row .meta { grid-column: 1 / 4; font-size: 0.8125rem; color: var(--ink-2); line-height: 1.5; }
+    .type-row .meta b { display: block; color: var(--ink); font-weight: 600; }
+    .type-row .sample { grid-column: 4 / 13; }
+
+    /* Stroke & shape */
+    .shape-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+    .shape-card { padding: var(--sp-6) 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: var(--sp-4); }
+    .shape-card .demo { min-height: 72px; display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap; }
+
+    /* Composition label */
+    .comp-label { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-4); padding: var(--sp-3) 0; border-top: var(--stroke) solid var(--ink); margin-bottom: var(--sp-8); }
+    .canvas { border: 1px solid var(--rule); background: var(--paper); padding: var(--sp-16) clamp(20px, 4vw, 56px); }
+
+    /* Hero A — the mark */
+    .heroA { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: center; row-gap: var(--sp-8); }
+    .heroA .mk { grid-column: 1 / 6; color: var(--sks-blue); }
+    .heroA .mk svg { width: 100%; height: auto; }
+    .heroA .tx { grid-column: 7 / 13; display: flex; flex-direction: column; gap: var(--sp-6); }
+    .now { font-size: 0.9375rem; color: var(--ink-2); }
+
+    /* Hero B — the thread */
+    .heroB .tx { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); margin-bottom: var(--sp-12); row-gap: var(--sp-6); }
+    .heroB .tx .display { grid-column: 1 / 8; }
+    .heroB .tx .lead { grid-column: 8 / 13; align-self: end; }
+    .thread svg { width: 100%; height: auto; overflow: visible; }
+    .thread .line { fill: none; stroke: var(--sks-blue); stroke-width: var(--stroke-bold); stroke-linecap: round; stroke-linejoin: round; }
+    .thread .node { fill: var(--paper); stroke: var(--sks-blue); stroke-width: 3; }
+    .thread .node--now { fill: var(--accent2); stroke: var(--accent2); }
+    .thread .yr { font: 600 11px var(--sans); letter-spacing: .08em; fill: var(--sks-deep); }
+    .thread .co { font: 400 16px var(--serif); fill: var(--ink); }
+    .thread .ro { font: 400 12px var(--sans); fill: var(--ink-2); }
+    .thread-list { display: none; }
+
+    /* Project entry */
+    .proj { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: var(--sp-6); align-items: end; text-decoration: none; }
+    .proj .frame { grid-column: 1 / 8; }
+    .proj .info { grid-column: 8 / 13; display: flex; flex-direction: column; gap: var(--sp-3); }
+    .proj:hover .h2 { color: var(--sks-deep); }
+
+    /* Case-study ledger — the CV's two columns */
+    .ledger { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: var(--sp-6); }
+    .ledger aside { grid-column: 1 / 4; display: flex; flex-direction: column; gap: var(--sp-2); }
+    .ledger aside .small i { font-family: var(--sans); }
+    .ledger .main { grid-column: 4 / 11; display: flex; flex-direction: column; gap: var(--sp-6); }
+    .quote { display: grid; grid-template-columns: 28px 1fr; gap: var(--sp-4); font-family: var(--serif); font-style: italic; font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: 1.35; color: var(--sks-blue); max-width: 34ch; }
+    .quote svg { width: 24px; height: 24px; margin-top: 6px; }
+    .quote svg path { fill: none; stroke: currentColor; stroke-width: 3.5; stroke-linecap: round; }
+
+    .left-behind { columns: 2; column-gap: var(--gap); }
+    .left-behind li { break-inside: avoid; padding: var(--sp-3) 0; border-top: 1px solid var(--rule); font-size: 0.9375rem; }
+    .left-behind li s { color: var(--ink-2); }
+
+    .decisions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+    .decision { border-top: var(--stroke) solid var(--sks-blue); padding-top: var(--sp-4); }
+    .decision .h3 { margin: var(--sp-2) 0 var(--sp-3); }
+
+    footer.foot { margin-top: var(--sp-24); border-top: 1px solid var(--rule); padding: var(--sp-8) 0 var(--sp-12); display: flex; justify-content: space-between; gap: var(--sp-6); flex-wrap: wrap; font-size: 0.875rem; color: var(--ink-2); }
+    footer.foot .brand svg { width: 28px; }
+
+    @media (max-width: 900px) {
+      .block-head .label, .block-head > div { grid-column: 1 / -1; }
+      .block-head .label { margin-bottom: var(--sp-4); }
+      .mark-big, .traits { grid-column: 1 / -1; }
+      .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .type-row .meta, .type-row .sample { grid-column: 1 / -1; }
+      .type-row .meta { margin-bottom: var(--sp-3); }
+      .shape-grid, .decisions { grid-template-columns: 1fr; }
+      .heroA .mk { grid-column: 1 / 8; } .heroA .tx { grid-column: 1 / -1; }
+      .heroB .tx .display, .heroB .tx .lead { grid-column: 1 / -1; }
+      .thread svg { display: none; } .thread-list { display: block; }
+      .proj .frame, .proj .info { grid-column: 1 / -1; }
+      .ledger aside, .ledger .main { grid-column: 1 / -1; }
+      .left-behind { columns: 1; }
+    }
+    @media (max-width: 900px) { .top-inner { display: block; padding: 12px 0; } .switches { margin-top: 10px; gap: 10px 18px; } }
+    .thread-list li { display: grid; grid-template-columns: 4rem 1fr; gap: var(--sp-3); padding: var(--sp-3) 0 var(--sp-3) var(--sp-4); border-left: var(--stroke-bold) solid var(--sks-blue); }
+    .thread-list li b { font-family: var(--serif); font-weight: 400; display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ── SPECIMEN HEADER + LIVE SWITCHES ── -->
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="index.html">{{MARK52}}<span>Design system v3 — proposal</span></a>
+      <div class="switches" role="group" aria-label="Open decisions">
+        <div class="switch">Second colour
+          <button data-k="accent" data-v="none" aria-pressed="true">Blue only</button>
+          <button data-k="accent" data-v="magenta" aria-pressed="false">Magenta</button>
+          <button data-k="accent" data-v="orange" aria-pressed="false">Orange</button>
+        </div>
+        <div class="switch">Seam
+          <button data-k="seam" data-v="stitch" aria-pressed="true">Stitch</button>
+          <button data-k="seam" data-v="line" aria-pressed="false">Line</button>
+        </div>
+        <div class="switch">Paper
+          <button data-k="paper" data-v="cotton" aria-pressed="true">Cotton</button>
+          <button data-k="paper" data-v="white" aria-pressed="false">White</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── 0. IDEA ── -->
+    <section class="block">
+      <div class="wrap block-head">
+        <p class="label">The idea</p>
+        <div>
+          <h1 class="display" style="margin-bottom: var(--sp-8);">Drawn from the mark.</h1>
+          <p class="lead">Nothing here is borrowed from a template. Every rule comes from something you already made: the SKS mark, your CV, your brand brief, and the line your career has drawn from garments to products.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 1. THE MARK ── -->
+    <section class="block">
+      <div class="wrap">
+        <div class="block-head">
+          <p class="label">01 — The mark</p>
+          <div>
+            <h2 class="h1">Five things the SKS mark already does</h2>
+            <p class="body">Each one becomes a rule for the whole system.</p>
+            <span class="src">Source: LOGO.svg, eight hand-corrected sizes</span>
+          </div>
+        </div>
+        <div class="mark-study">
+          <div class="mark-big">{{MARK400}}</div>
+          <div class="traits">
+            <div class="trait">
+              <svg viewBox="0 0 28 28"><path d="M5 23 L23 5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+              <div><b>It moves at 45°, up and to the right.</b><p>So every arrow points ↗, and the career thread rises in 45° steps.</p></div>
+            </div>
+            <div class="trait">
+              <svg viewBox="0 0 28 28"><path d="M6 14 H22" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg>
+              <div><b>Every end is round.</b><p>Anything you can press — buttons, tags, switches — ends like its strokes.</p></div>
+            </div>
+            <div class="trait">
+              <svg viewBox="0 0 28 28"><path d="M24 4 L12 16 A6 6 0 0 0 16 26" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+              <div><b>Hard strokes meet a soft bowl.</b><p>The grid, images and Inter stay hard. Lines, buttons and Baskerville stay soft.</p></div>
+            </div>
+            <div class="trait">
+              <svg viewBox="0 0 28 28"><path d="M4 9 H24 M4 19 H24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+              <div><b>One weight.</b><p>One stroke token draws every line on the site: rules, underlines, arrows, the thread.</p></div>
+            </div>
+            <div class="trait">
+              <svg viewBox="0 0 28 28"><path d="M4 22 L10 16 M14 22 L24 12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+              <div><b>It is corrected by size.</b><p>Small drawings have heavier strokes and open gaps. Type does the same: tight at display, loose at label size.</p></div>
+            </div>
+          </div>
+          <div class="ladder">
+            <figure>{{MARK400B}}<figcaption>400 drawing · large use</figcaption></figure>
+            <figure>{{MARK52B}}<figcaption>52 drawing · the header</figcaption></figure>
+            <figure>{{MARK32B}}<figcaption>32 drawing · favicon</figcaption></figure>
+            <p class="small" style="max-width:30ch">All three enlarged to the same height: the smaller drawings carry heavier strokes and wider gaps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. COLOUR ── -->
+    <section class="block">
+      <div class="wrap">
+        <div class="block-head">
+          <p class="label">02 — Colour</p>
+          <div>
+            <h2 class="h1">Blue is the ink, not an accent</h2>
+            <p class="body">Your CV already sets your name and headings in blue. The system keeps that: SKS blue writes the name, the headings and every stroke. Text is a blue-black, like indigo-dyed cotton, so even the body copy belongs to the mark.</p>
+            <span class="src">Sources: LOGO.svg · CV · brief (“neutrals + 1–2 bold tones”)</span>
+          </div>
+        </div>
+        <div class="swatches">
+          <div class="sw"><div class="sw-chip" style="background:#2C57CA"></div><b>SKS Blue</b><code>#2C57CA</code><p>The mark, the name, headings, links, the stroke. 5.8:1 on cotton.</p></div>
+          <div class="sw"><div class="sw-chip" style="background:#163A9A"></div><b>Deep Blue</b><code>#163A9A</code><p>Labels and pressed states, like the CV's bold caps.</p></div>
+          <div class="sw"><div class="sw-chip" style="background:#111A33"></div><b>Ink</b><code>#111A33</code><p>Body text. A blue-black, never neutral black.</p></div>
+          <div class="sw"><div class="sw-chip" style="background:#4A5068"></div><b>Ink 2</b><code>#4A5068</code><p>Captions and secondary text. 7.2:1.</p></div>
+          <div class="sw"><div class="sw-chip" style="background:var(--paper)"></div><b>Paper</b><code class="paper-hex">#F6F4EE</code><p>Unbleached cotton — or white, see the switch.</p></div>
+          <div class="sw"><div class="sw-chip" style="background:var(--surface)"></div><b>Greige</b><code>#ECE8DF</code><p>Behind images. Greige is the textile word for undyed cloth.</p></div>
+          <div class="sw"><div class="sw-chip" style="background:#E7EDFB"></div><b>Wash</b><code>#E7EDFB</code><p>Selection and hover tint.</p></div>
+          <div class="sw"><div class="sw-chip acc-chip"></div><b>Second colour</b><code class="acc-hex">none</code><p>Optional, and only for one job: what is happening now.</p></div>
+        </div>
+        <div class="share" aria-label="Share of the page">
+          <div style="flex:68;background:var(--paper)">Paper 68%</div>
+          <div style="flex:18;background:#111A33;color:#fff">Ink 18%</div>
+          <div style="flex:11;background:#2C57CA;color:#fff">Blue 11%</div>
+          <div style="flex:3;background:var(--accent2)"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. TYPE ── -->
+    <section class="block">
+      <div class="wrap">
+        <div class="block-head">
+          <p class="label">03 — Type</p>
+          <div>
+            <h2 class="h1">The pairing you already chose</h2>
+            <p class="body">Libre Baskerville and Inter are on your CV, your brand brief and your first design system. They stay. What changes is how they are used: Baskerville in blue for the voice, Inter for structure, and the CV's bold caps for labels instead of a monospace.</p>
+            <span class="src">Source: CV · brief (“clean sans core, serif accent”)</span>
+          </div>
+        </div>
+        <div class="type-rows">
+          <div class="type-row"><div class="meta"><b>Display</b>Baskerville 400 · 40–72px · −2.5%</div><div class="sample display">Shashank Kumar Sinha</div></div>
+          <div class="type-row"><div class="meta"><b>Heading 1</b>Baskerville 400 · 32–50px · −2%</div><div class="sample h1">A brand that steps back so the rug can lead</div></div>
+          <div class="type-row"><div class="meta"><b>Heading 2</b>Baskerville 400 · 24–34px</div><div class="sample h2">Two marks, two jobs</div></div>
+          <div class="type-row"><div class="meta"><b>Voice</b>Baskerville italic · quotes and emphasis</div><div class="sample h2"><em>Expression lives in the product.</em></div></div>
+          <div class="type-row"><div class="meta"><b>Lead</b>Inter 400 · 18–21px</div><div class="sample lead">Positioning, identity and a design system for a handmade-rug house from Bhadohi, carried through to a live store.</div></div>
+          <div class="type-row"><div class="meta"><b>Body</b>Inter 400 · 17px / 1.65 · 65ch</div><div class="sample body">The first palette, in January, was plum and gold. The final system is eight earth colours drawn from natural-dye heritage, each with a fixed share of the page, and one test governs all of it.</div></div>
+          <div class="type-row"><div class="meta"><b>Label</b>Inter 600 caps · 12px · +8% · deep blue</div><div class="sample"><span class="label">Brand strategy · Identity · 2026</span></div></div>
+          <div class="type-row"><div class="meta"><b>Caption</b>Inter 400 · 14px · ink 2</div><div class="sample small">January's plum and gold, beside the final eight colours.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 4. STROKE & SHAPE ── -->
+    <section class="block">
+      <div class="wrap">
+        <div class="block-head">
+          <p class="label">04 — Stroke &amp; shape</p>
+          <div>
+            <h2 class="h1">One line, drawn the same everywhere</h2>
+            <p class="body">The seam between sections is a running stitch: short strokes with round ends. You trained in fashion and spent years on garments, home textiles and rugs, so the most personal line on the site is the one a needle makes. If it feels like too much, the switch turns it into a plain stroke.</p>
+          </div>
+        </div>
+        <div class="shape-grid">
+          <div class="shape-card"><span class="label">Hairline · structure</span><div class="demo" style="display:block"><hr class="rule"></div><p class="small">1px, ink at 16%. Tables and lists.</p></div>
+          <div class="shape-card"><span class="label">Stroke · emphasis</span><div class="demo" style="display:block"><hr class="stroke"></div><p class="small">2px SKS blue, round caps. Underlines, quote marks, the top of a decision.</p></div>
+          <div class="shape-card"><span class="label">Seam · between projects</span><div class="demo" style="display:block"><hr class="seam" style="margin:0"></div><p class="small">Stitch or line — your call.</p></div>
+          <div class="shape-card"><span class="label">Arrow · 45°</span><div class="demo"><a class="link" href="#">Read the case study<svg class="arrow" viewBox="0 0 16 16"><path d="M3.5 12.5 L12.5 3.5 M6 3.5 H12.5 V10"/></svg></a></div><p class="small">Drawn at the mark's angle, with its round ends.</p></div>
+          <div class="shape-card"><span class="label">Pressable · round</span><div class="demo"><a class="btn btn-primary" href="#">Get in touch</a><a class="btn btn-secondary" href="#">Download CV</a></div><p class="small">Pill ends, 2px stroke, no shadow.</p></div>
+          <div class="shape-card"><span class="label">Tags · round</span><div class="demo"><span class="tag tag--on">Identity</span><span class="tag">Design system</span><span class="tag">3D</span></div><p class="small">Images and the grid stay square.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 5. IN USE ── -->
+    <section class="block">
+      <div class="wrap">
+        <div class="block-head">
+          <p class="label">05 — In use</p>
+          <div>
+            <h2 class="h1">Two ways to open the site</h2>
+            <p class="body">Same system, two heroes. Option A leads with the mark. Option B leads with your path, drawn as one continuous thread. Copy is placeholder until you write it.</p>
+          </div>
+        </div>
+
+        <div class="comp-label"><span class="label">Hero option A — the mark</span><span class="small">Home, first screen</span></div>
+        <div class="canvas">
+          <div class="heroA">
+            <div class="mk">{{MARK400}}</div>
+            <div class="tx">
+              <span class="label">Brand &amp; product designer</span>
+              <h2 class="display">Shashank Kumar Sinha</h2>
+              <p class="lead">Trained in fashion at NIFT. Ten years from garments and home textiles to identities, interfaces and the systems that keep them consistent.</p>
+              <p class="now"><span class="dot"></span>Now — Brand &amp; Product Design Lead, Vistofy</p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="seam">
+
+        <div class="comp-label"><span class="label">Hero option B — the thread</span><span class="small">Home, first screen</span></div>
+        <div class="canvas heroB">
+          <div class="tx">
+            <h2 class="display">Shashank Kumar Sinha</h2>
+            <p class="lead">Brand and product designer. Trained in fashion at NIFT; ten years from garments to identities, interfaces and design systems.</p>
+          </div>
+          <div class="thread">
+            {{THREAD}}
+            <ol class="thread-list">
+              <li><span class="label">2016</span><span><b>Pearl Global</b><span class="small">Assistant designer, Ann Taylor</span></span></li>
+              <li><span class="label">2017</span><span><b>Studio Novature</b><span class="small">Assistant designer</span></span></li>
+              <li><span class="label">2018</span><span><b>Digambar Kamini</b><span class="small">Founder, home textiles</span></span></li>
+              <li><span class="label">2021</span><span><b>Tech Pro Lab</b><span class="small">UI designer</span></span></li>
+              <li><span class="label">2022</span><span><b>Learnet Skills</b><span class="small">Consultant, UX research</span></span></li>
+              <li><span class="label">2023</span><span><b>Independent</b><span class="small">Brand &amp; web</span></span></li>
+              <li><span class="label">2026</span><span><b>Vistofy</b><span class="small">Brand &amp; product design lead</span></span></li>
+            </ol>
+          </div>
+        </div>
+
+        <hr class="seam">
+
+        <div class="comp-label"><span class="label">Project entry</span><span class="small">Home, selected work</span></div>
+        <div class="canvas">
+          <a class="proj" href="work/indi-teppich.html">
+            <div class="frame"><img src="assets/images/indi-teppich/cover.webp" alt="The Indi Teppich homepage" width="2400" height="1500"></div>
+            <div class="info">
+              <span class="label">02 · Brand strategy · Identity · 2026</span>
+              <h3 class="h2">Indi Teppich</h3>
+              <p class="small" style="color:var(--ink)">A brand that steps back so the rug can lead: positioning, two marks, an eight-colour palette and a 191-variable system.</p>
+              <span class="link">Read the case study<svg class="arrow" viewBox="0 0 16 16"><path d="M3.5 12.5 L12.5 3.5 M6 3.5 H12.5 V10"/></svg></span>
+            </div>
+          </a>
+          <hr class="seam">
+          <a class="proj" href="work/copo.html">
+            <div class="frame"><img src="assets/images/copo/cover.webp" alt="The COPO logo in relief" width="1600" height="980"></div>
+            <div class="info">
+              <span class="label">05 · Brand identity · 3D · 2023</span>
+              <h3 class="h2">COPO</h3>
+              <p class="small" style="color:var(--ink)">An identity drawn from the Kopou orchid, with a logo manual and every printed piece rendered in Cinema 4D.</p>
+              <span class="link">Read the case study<svg class="arrow" viewBox="0 0 16 16"><path d="M3.5 12.5 L12.5 3.5 M6 3.5 H12.5 V10"/></svg></span>
+            </div>
+          </a>
+        </div>
+
+        <hr class="seam">
+
+        <div class="comp-label"><span class="label">Case-study section — the CV ledger</span><span class="small">Inside a case study</span></div>
+        <div class="canvas">
+          <div class="ledger">
+            <aside>
+              <span class="label">The palette</span>
+              <p class="small">January → March 2026<br><i>Colour, guidelines</i></p>
+            </aside>
+            <div class="main">
+              <h3 class="h2">A palette that steps back</h3>
+              <p class="body">The first palette was plum and gold. The final system is eight earth colours drawn from natural-dye heritage, each with its print and screen values and a fixed share of the page.</p>
+              <blockquote class="quote"><svg viewBox="0 0 24 24"><path d="M4 20 L20 4"/></svg><span>Cover your product photography. If the palette feels generic without it, it's working too hard.</span></blockquote>
+              <div class="frame"><img src="assets/images/indi-teppich/palette-evolution.webp" alt="Plum and gold beside the final earth palette" width="2400" height="1955" loading="lazy"></div>
+              <p class="caption">January's plum and gold, beside the final eight colours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 6. LEFT BEHIND ── -->
+    <section class="block">
+      <div class="wrap">
+        <div class="block-head">
+          <p class="label">06 — Left behind</p>
+          <div>
+            <h2 class="h1">What made v2 look generated</h2>
+            <p class="body">These are the moves AI site builders reach for by default. None of them had a reason rooted in you.</p>
+          </div>
+        </div>
+        <ul class="left-behind">
+          <li><s>Instrument Serif + Inter + a monospace</s> → your own Baskerville + Inter</li>
+          <li><s>A poster-size name with an orange full stop</s> → the name at a reading size, in your blue</li>
+          <li><s>Monospace uppercase labels everywhere</s> → the CV's bold caps</li>
+          <li><s>“(05)” counters and “Fig. 01” captions</s> → plain numbers where they help</li>
+          <li><s>Visible grid lines as decoration</s> → a grid you feel, not see</li>
+          <li><s>A black “Let's work together.” slab</s> → contact in the same voice as the rest</li>
+          <li><s>Orange from nowhere</s> → the blue of your mark</li>
+          <li><s>Aphorism cards and a three-column skills list</s> → content decided later, with you</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── 7. DECISIONS ── -->
+    <section class="block">
+      <div class="wrap">
+        <div class="block-head">
+          <p class="label">07 — Your calls</p>
+          <div><h2 class="h1">Four decisions before anything is built</h2></div>
+        </div>
+        <div class="decisions">
+          <div class="decision"><span class="label">A</span><h3 class="h3">Second colour</h3><p class="small">Blue only, magenta (your CV's contact colour) or orange (your brief). Used for one job only: what is happening now.</p></div>
+          <div class="decision"><span class="label">B</span><h3 class="h3">The seam</h3><p class="small">A running stitch for your textile years, or a plain stroke.</p></div>
+          <div class="decision"><span class="label">C</span><h3 class="h3">Paper</h3><p class="small">Unbleached cotton or white. Your CV and invoice are white.</p></div>
+          <div class="decision"><span class="label">D</span><h3 class="h3">The hero</h3><p class="small">A — the mark, or B — the thread. Or the thread on About and the mark on Home.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="wrap foot">
+    <a class="brand" href="index.html">{{MARK52}}<span>Shashank Kumar Sinha</span></a>
+    <span>Proposal, not yet applied to the site.</span>
+  </footer>
+
+  <script>
+    // Live switches for the open decisions; remembers nothing.
+    document.querySelectorAll('.switch button').forEach(b => b.addEventListener('click', () => {
+      document.documentElement.dataset[b.dataset.k] = b.dataset.v;
+      document.querySelectorAll(`.switch button[data-k="${b.dataset.k}"]`).forEach(x => x.setAttribute('aria-pressed', x === b));
+      const acc = { none: 'none', magenta: '#C2369F', orange: '#E8601C' }[document.documentElement.dataset.accent];
+      document.querySelector('.acc-hex').textContent = acc;
+      document.querySelector('.paper-hex').textContent = document.documentElement.dataset.paper === 'white' ? '#FFFFFF' : '#F6F4EE';
+    }));
+  </script>
+</body>
+</html>
