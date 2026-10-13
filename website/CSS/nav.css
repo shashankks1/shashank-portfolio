@@ -1,7 +1,7 @@
 /* ── SITE HEADER ─────────────────────────────────── */
 .site-header {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   z-index: 100;
   background: var(--paper);
   border-bottom: 1px solid var(--rule);
