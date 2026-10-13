@@ -241,3 +241,7 @@ main > .case-img-full img { outline: none; border-bottom: 1px solid var(--rule);
 }
 
 .case-next:hover .case-next-title { color: var(--accent-ink); }
+
+/* Narrow figure — tall phone screenshots shouldn't fill the page */
+.case-body > .container > .case-img-offset--narrow { grid-column: 4 / 8; }
+@media (max-width: 720px) { .case-body > .container > .case-img-offset--narrow { grid-column: 1 / -1 !important; } }

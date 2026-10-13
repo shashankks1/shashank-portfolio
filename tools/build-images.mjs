@@ -129,4 +129,26 @@ const fit = (f, w) => sharp(f, { limitInputPixels: false }).resize({ width: w, w
   // Not used any more: the Instagram mockup (its post grid shows real customers) — delete if present.
   for (const old of ['social', 'collateral', 'mark-render']) fs.rmSync(`${SITE}/${d}/${old}.webp`, { force: true });
 }
+// ── INDI TEPPICH ─────────────────────────────────────────────────────
+{
+  const d = 'indi-teppich';
+  const IT = 'D:/WORK/Freelance/INDI TEPPICH';
+  const L = p => S(`it/live2-${p}.png`);              // live site, captured at 2x (1440 css px)
+  const band = (f, top, h) => sharp(f, { limitInputPixels: false }).extract({ left: 0, top, width: 2880, height: h }).resize({ width: W });
+  await save(band(L('home'), 0, 1800), d, 'cover');
+  await save(band(L('home'), 2036, 2406), d, 'live-featured');
+  await save(band(L('product'), 0, 1980), d, 'live-product');
+  await save(band(L('consultation'), 1200, 2780), d, 'live-consultation');
+  await save(sharp(L('home-m')).resize({ width: 1170 }), d, 'live-mobile');
+  await save(sharp(S('it/hi-pos-02.png')).extract({ left: 90, top: 300, width: 1420, height: 560 }), d, 'positioning');  // the statement, without the empty page
+  await save(await grid([[S('it/hi-prop-04.png'), S('it/hi-prop-05.png')]], { gap: 16 }), d, 'logo-proposal');
+  await save(await grid([[S('it/hi-man-05.png'), S('it/hi-man-10.png'), S('it/hi-man-12.png')]], { gap: 16 }), d, 'logo-manual');
+  // Palette evolution: January's plum and gold beside the final eight earth colours
+  const plum = await sharp(`${IT}/Brand/colors final.png`).extract({ left: 443, top: 0, width: 495, height: 1676 }).toBuffer();
+  await save(await grid([[plum, S('it/g-palette.png')]], { gap: 24 }), d, 'palette-evolution');
+  await save(fit(S('it/g-hierarchy.png'), W), d, 'colour-frequency');
+  await save(fit(S('it/g-typefaces.png'), W), d, 'typefaces');
+  await save(sharp(`${IT}/PATTERNS & TEXTURE/PNG/Asset 4@4x.png`, { limitInputPixels: false })
+    .extract({ left: 0, top: 1661, width: 6644, height: 3322 }).resize({ width: W }), d, 'pattern');
+}
 console.log('done');
