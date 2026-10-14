@@ -37,16 +37,22 @@
 /* ── WORK ────────────────────────────────────────── */
 .work { padding-bottom: var(--sp-8); }
 
-.proj {
+/* Projects as a two-column grid (review comment 2026-10-14) */
+.work-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--gap);
-  row-gap: var(--sp-6);
-  align-items: end;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(24px, 3vw, 48px);
+  row-gap: clamp(64px, 7vw, 112px);
+}
+
+.proj {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+  min-width: 0;
 }
 
 .proj-media {
-  grid-column: 1 / 8;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--surface);
@@ -59,18 +65,14 @@
 .proj-media--contain img { object-fit: contain; padding: var(--sp-4); }
 
 .proj-info {
-  grid-column: 8 / 13;
   display: flex;
   flex-direction: column;
   gap: var(--sp-3);
 }
 
-.proj-info .small { color: var(--ink); max-width: 44ch; }
+.proj-info .small { color: var(--ink); max-width: 52ch; }
 .proj-info .project-link { margin-top: var(--sp-2); align-self: flex-start; }
 .proj:hover .h2 { color: var(--sks-deep); }
-
-/* No dividers between projects (review comment 2026-10-13): space alone separates them */
-.proj + .proj { margin-top: clamp(96px, 11vw, 168px); }
 
 /* ── ABOUT PULL + CONTACT — same ledger, same voice ── */
 .about-pull,
