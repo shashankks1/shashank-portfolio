@@ -1,5 +1,10 @@
 /* ── RESPONSIVE ──────────────────────────────────── */
 
+/* Tablet: two projects across */
+@media (max-width: 1080px) {
+  .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 /* Tablet and down: the ledger folds into one column */
 @media (max-width: 900px) {
   .hero-text { grid-column: 1 / -1; }
