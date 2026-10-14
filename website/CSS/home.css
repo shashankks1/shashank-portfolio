@@ -101,6 +101,7 @@
 /* Link-sized, in the accent (review comment 2026-10-14) */
 .contact-email {
   position: relative;
+  z-index: 0;
   display: inline-block;
   font-family: var(--sans);
   font-size: var(--t-lead);
@@ -116,10 +117,11 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  height: var(--stroke);
+  height: 6px;
   width: 100%;
-  border-radius: 2px;
-  background: currentColor;
+  border-radius: 3px;
+  background: var(--sks-lime);   /* the accent as a marker; the text itself stays blue */
+  z-index: -1;
 }
 
 .contact-email:hover { color: var(--sks-deep); }

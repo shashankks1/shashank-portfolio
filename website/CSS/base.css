@@ -18,7 +18,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-::selection { background: var(--sks-wash); }
+::selection { background: var(--sks-lime); color: var(--ink); }
 
 :focus-visible {
   outline: var(--stroke) solid var(--sks-blue);
@@ -50,7 +50,7 @@ em { font-family: var(--serif); font-style: italic; }
 .lead { font-size: var(--t-lead); line-height: 1.5; max-width: 46ch; }
 .small { font-size: var(--t-small); line-height: 1.55; color: var(--ink-2); }
 
-/* Label — the CV's bold caps in deep blue */
+/* Label — the CV's bold caps, in magenta (labels and metadata are magenta's job) */
 .label {
   font-family: var(--sans);
   font-size: var(--t-label);
@@ -58,7 +58,7 @@ em { font-family: var(--serif); font-style: italic; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 1.5;
-  color: var(--sks-deep);
+  color: var(--sks-magenta-ink);
 }
 
 /* Read by screen readers, not shown */

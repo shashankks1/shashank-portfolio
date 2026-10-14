@@ -7,13 +7,19 @@
   /* Colour — blue is the ink, not an accent */
   --sks-blue: #2C57CA;     /* the mark, the name, headings, links, every stroke — 5.8:1 on paper */
   --sks-deep: #163A9A;     /* labels, pressed and hover states */
-  --sks-wash: #E7EDFB;     /* selection, hover tint */
+  --sks-wash: #E7EDFB;     /* hover tint */
+
+  /* Secondary + accent (Shashank, 2026-10-14). One job each:
+     magenta = labels and metadata; lime = highlight, fill only, never text on paper (1.4:1) */
+  --sks-magenta:     #D043C2;   /* his CV magenta — borders, large marks (3.6:1) */
+  --sks-magenta-ink: #A62D99;   /* magenta for small text (5.5:1) */
+  --sks-lime:        #99E429;   /* highlight fill; ink on lime is 11:1 */
   --ink:      #111A33;     /* body text, a blue-black — 15.9:1 */
   --ink-2:    #4A5068;     /* captions, secondary text — 7.2:1 */
   --rule:     rgba(17, 26, 51, 0.16);
   --paper:    #F6F4EE;     /* unbleached cotton */
   --surface:  #ECE8DF;     /* greige — behind images */
-  --accent2:  var(--sks-blue);  /* the optional second colour; blue only for now */
+  --accent2:  var(--sks-lime);  /* what is happening now / next */
 
   /* Type — the CV's pairing */
   --serif: 'Libre Baskerville', Georgia, serif;

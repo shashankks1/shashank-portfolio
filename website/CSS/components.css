@@ -62,8 +62,8 @@
   font: 500 0.8125rem/1 var(--sans);
   padding: 7px 12px;
   border-radius: 999px;
-  border: 1.5px solid var(--sks-blue);
-  color: var(--sks-blue);
+  border: 1.5px solid var(--sks-magenta);
+  color: var(--sks-magenta-ink);
 }
 
 .dot {
@@ -72,6 +72,7 @@
   height: 9px;
   border-radius: 50%;
   background: var(--accent2);
+  border: 1.5px solid var(--sks-blue);   /* lime alone is too faint on paper */
   margin-right: 8px;
   vertical-align: 1px;
 }
@@ -102,7 +103,7 @@
 .facts { display: grid; }
 .facts div { display: grid; grid-template-columns: 7.5rem 1fr; gap: var(--sp-4); padding: var(--sp-3) 0; border-top: 1px solid var(--rule); }
 .facts div:last-child { border-bottom: 1px solid var(--rule); }
-.facts dt { font-size: var(--t-label); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sks-deep); padding-top: 3px; }
+.facts dt { font-size: var(--t-label); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sks-magenta-ink); padding-top: 3px; }
 .facts dd { font-size: 0.9375rem; line-height: 1.5; }
 
 /* ── LEGACY FORM CONTROLS (components page) ── */

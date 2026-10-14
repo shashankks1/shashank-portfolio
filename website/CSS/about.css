@@ -8,8 +8,8 @@
 .thread svg { width: 100%; height: auto; overflow: visible; }
 .thread .line { fill: none; stroke: var(--sks-blue); stroke-width: var(--stroke-bold); stroke-linecap: round; stroke-linejoin: round; }
 .thread .node { fill: var(--paper); stroke: var(--sks-blue); stroke-width: 3; }
-.thread .node--now { fill: var(--accent2); stroke: var(--accent2); }
-.thread .yr { font: 600 11px var(--sans); letter-spacing: .08em; fill: var(--sks-deep); }
+.thread .node--now { fill: var(--accent2); stroke: var(--sks-blue); }
+.thread .yr { font: 600 11px var(--sans); letter-spacing: .08em; fill: var(--sks-magenta-ink); }
 .thread .co { font: 400 16px var(--serif); fill: var(--ink); }
 .thread .ro { font: 400 12px var(--sans); fill: var(--ink-2); }
 .thread-list { display: none; }
