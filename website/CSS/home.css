@@ -38,7 +38,6 @@
 .hero-sheet, .hero-more { display: flex; flex-direction: column; gap: var(--sp-6); }
 
 .hero-now { font-size: 0.9375rem; color: var(--ink-2); }
-.hero-text .label { color: var(--sks-magenta-deep); }   /* the paper is darker than the page */
 
 .hero-cue { grid-column: 1 / -1; align-self: end; justify-self: start; position: relative; padding-bottom: 4px; }
 .hero-cue::after { content: ''; position: absolute; left: 0; bottom: 0; height: var(--stroke); width: 0; border-radius: 2px; background: var(--sks-deep); transition: width .2s ease; }
