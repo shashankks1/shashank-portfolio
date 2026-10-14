@@ -17,84 +17,47 @@
       </div>
     </section>
 
-    <!-- ── WORK ── -->
+    <!-- ── WORK — an interactive collage, with a plain index under it ── -->
     <section class="work" id="work">
       <div class="container">
-
         <h2 class="visually-hidden">Work</h2>
-
-        <div class="work-grid">
-
-        <a href="work/vistofy-identity.html" class="proj">
-          <div class="proj-media"><img src="assets/images/vistofy-identity/cover.webp" alt="The redrawn Vistofy mark: a V whose two strokes fold into a small cup" width="2400" height="1600" /></div>
-          <div class="proj-info">
-            <span class="label">01 · Brand identity · Logo system · 2026</span>
-            <h3 class="h2">Vistofy Identity</h3>
-            <p class="small">A logo that only worked large, redrawn so it survives a browser tab, a rubber stamp and a photocopy, with a kit that keeps it that way in other people's hands.</p>
-            <span class="project-link">Read the case study</span>
-          </div>
-        </a>
-
-
-        <a href="work/indi-teppich.html" class="proj">
-          <div class="proj-media"><img src="assets/images/indi-teppich/cover.webp" alt="The Indi Teppich homepage: a living room with a hand-made rug" width="2400" height="1500" loading="lazy" /></div>
-          <div class="proj-info">
-            <span class="label">02 · Brand strategy · Identity · Design system · 2026</span>
-            <h3 class="h2">Indi Teppich</h3>
-            <p class="small">Positioning, two marks, an eight-colour palette and a 191-variable design system for a handmade-rug house from Bhadohi, built on one test: the palette should recede so the rug is the most colourful thing in the room.</p>
-            <span class="project-link">Read the case study</span>
-          </div>
-        </a>
-
-
-        <a href="work/learnet.html" class="proj">
-          <div class="proj-media proj-media--contain"><img src="assets/images/learnet/journey-map.webp" alt="Learnet user journey map from awareness to achievement" width="2400" height="1332" loading="lazy" /></div>
-          <div class="proj-info">
-            <span class="label">03 · UX research · Product design · 2022–2025</span>
-            <h3 class="h2">Learnet Skills</h3>
-            <p class="small">Six cities of field research for a programme teaching women to run apparel businesses, turned into a bilingual learning app with three earned levels.</p>
-            <span class="project-link">Read the case study</span>
-          </div>
-        </a>
-
-
-        <a href="work/vistofy-festivals.html" class="proj">
-          <div class="proj-media"><img src="assets/images/vistofy-festivals/cover.webp" alt="Six festival templates from six different sets" width="2400" height="1594" loading="lazy" /></div>
-          <div class="proj-info">
-            <span class="label">04 · Art direction · Image rulebook · 2026</span>
-            <h3 class="h2">Vistofy Festival Line</h3>
-            <p class="small">A rulebook for an AI image line (space, two lines of copy, a variety matrix) that keeps 161 festival images in three languages from looking alike.</p>
-            <span class="project-link">Read the case study</span>
-          </div>
-        </a>
-
-
-        <a href="work/copo.html" class="proj">
-          <div class="proj-media"><img src="assets/images/copo/cover.webp" alt="The COPO logo standing in relief against a pink-to-mauve wall" width="1600" height="980" loading="lazy" /></div>
-          <div class="proj-info">
-            <span class="label">05 · Brand identity · 3D · 2023–2024</span>
-            <h3 class="h2">COPO</h3>
-            <p class="small">An identity drawn from the Kopou, the orchid of Bohag Bihu: neon options, a turn to plum, a 14-page logo manual, and every printed piece rendered in Cinema 4D.</p>
-            <span class="project-link">Read the case study</span>
-          </div>
-        </a>
-
-
-        <a href="work/mb-consulting.html" class="proj">
-          <div class="proj-media"><img src="assets/images/mb-consulting/home-cover.webp" alt="MB Consulting homepage with a full-screen project photograph" width="1440" height="900" loading="lazy" /></div>
-          <div class="proj-info">
-            <span class="label">06 · Web design · Development · 2025</span>
-            <h3 class="h2">MB Consulting</h3>
-            <p class="small">A hand-coded website for an architecture and interiors firm in Jaipur, built so the work is the hero. 28 projects, one template. Live at mbcon.in.</p>
-            <span class="project-link">Read the case study</span>
-          </div>
-        </a>
-
+        <p class="collage-hint label" aria-hidden="true">Drag the pieces around, or click one to open it</p>
+        <div class="collage">
+          <a href="work/vistofy-identity.html" class="piece" data-piece="01" style="--x:0%; --y:6%; --w:35%; --r:-2deg; --z:1">
+            <img src="assets/images/vistofy-identity/cover.webp" alt="The redrawn Vistofy mark" width="2400" height="1600" draggable="false" />
+            <span class="piece-tag"><span class="piece-no">01</span> Vistofy Identity</span>
+          </a>
+          <a href="work/indi-teppich.html" class="piece" data-piece="02" style="--x:36%; --y:0%; --w:12.5%; --r:2.5deg; --z:7">
+            <img src="assets/images/indi-teppich/live-mobile.webp" alt="The Indi Teppich store on a phone" width="1170" height="2532" draggable="false" loading="lazy" />
+            <span class="piece-tag"><span class="piece-no">02</span> Indi Teppich</span>
+          </a>
+          <a href="work/learnet.html" class="piece" data-piece="03" style="--x:47.5%; --y:12%; --w:31%; --r:-1.5deg; --z:3">
+            <img src="assets/images/learnet/journey-map.webp" alt="Learnet user journey map" width="2400" height="1332" draggable="false" loading="lazy" />
+            <span class="piece-tag"><span class="piece-no">03</span> Learnet Skills</span>
+          </a>
+          <a href="work/vistofy-festivals.html" class="piece" data-piece="04" style="--x:72%; --y:44%; --w:20%; --r:3deg; --z:4">
+            <img src="assets/images/vistofy-festivals/square.webp" alt="An Indian Air Force Day festival template" width="1000" height="1000" draggable="false" loading="lazy" />
+            <span class="piece-tag"><span class="piece-no">04</span> Vistofy Festival Line</span>
+          </a>
+          <a href="work/copo.html" class="piece" data-piece="05" style="--x:2%; --y:60%; --w:27%; --r:1.5deg; --z:5">
+            <img src="assets/images/copo/cover.webp" alt="The COPO logo in relief" width="1600" height="980" draggable="false" loading="lazy" />
+            <span class="piece-tag"><span class="piece-no">05</span> COPO</span>
+          </a>
+          <a href="work/mb-consulting.html" class="piece" data-piece="06" style="--x:33%; --y:57%; --w:32%; --r:-2.5deg; --z:6">
+            <img src="assets/images/mb-consulting/home-cover.webp" alt="MB Consulting homepage" width="1440" height="900" draggable="false" loading="lazy" />
+            <span class="piece-tag"><span class="piece-no">06</span> MB Consulting</span>
+          </a>
         </div>
-
+        <ol class="work-index">
+          <li><a href="work/vistofy-identity.html" class="work-row" data-piece="01"><span class="work-row-no">01</span><span class="work-row-title">Vistofy Identity</span><span class="work-row-meta">Brand identity · Logo system</span><span class="work-row-year">2026</span></a></li>
+          <li><a href="work/indi-teppich.html" class="work-row" data-piece="02"><span class="work-row-no">02</span><span class="work-row-title">Indi Teppich</span><span class="work-row-meta">Brand strategy · Identity · Design system</span><span class="work-row-year">2026</span></a></li>
+          <li><a href="work/learnet.html" class="work-row" data-piece="03"><span class="work-row-no">03</span><span class="work-row-title">Learnet Skills</span><span class="work-row-meta">UX research · Product design</span><span class="work-row-year">2022–2025</span></a></li>
+          <li><a href="work/vistofy-festivals.html" class="work-row" data-piece="04"><span class="work-row-no">04</span><span class="work-row-title">Vistofy Festival Line</span><span class="work-row-meta">Art direction · Image rulebook</span><span class="work-row-year">2026</span></a></li>
+          <li><a href="work/copo.html" class="work-row" data-piece="05"><span class="work-row-no">05</span><span class="work-row-title">COPO</span><span class="work-row-meta">Brand identity · 3D</span><span class="work-row-year">2023–2024</span></a></li>
+          <li><a href="work/mb-consulting.html" class="work-row" data-piece="06"><span class="work-row-no">06</span><span class="work-row-title">MB Consulting</span><span class="work-row-meta">Web design · Development</span><span class="work-row-year">2025</span></a></li>
+        </ol>
       </div>
     </section>
-
 
     <!-- ── ABOUT ── -->
     <section class="about-pull">
@@ -118,5 +81,7 @@
         </div>
       </div>
     </section>
+
+    <script src="assets/js/collage.js" defer></script>
 
   </main>

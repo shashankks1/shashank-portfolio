@@ -1,10 +1,5 @@
 /* ── RESPONSIVE ──────────────────────────────────── */
 
-/* Tablet: two projects across */
-@media (max-width: 1080px) {
-  .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
 /* Tablet and down: the ledger folds into one column */
 @media (max-width: 900px) {
   .hero-text { grid-column: 1 / -1; }
@@ -31,7 +26,14 @@
 
 /* Phone */
 @media (max-width: 700px) {
-  .work-grid { grid-template-columns: 1fr; }
+  /* Phones: no hover or drag, so the collage becomes a tilted two-column pile */
+  .collage-hint { display: none; }
+  .collage { aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-12) var(--sp-4); align-items: start; }
+  .piece { position: relative; left: auto; top: auto; width: auto; cursor: pointer; }
+  .piece-tag { font-size: 0.8125rem; padding: 5px 10px; max-width: calc(100% - 4px); left: 4px; white-space: normal; }
+  .work-row { grid-template-columns: 2.25rem minmax(0, 1fr) 1rem; row-gap: 2px; }
+  .work-row-meta, .work-row-year { grid-column: 2; }
+  .work-row::after { grid-column: 3; grid-row: 1; }
 }
 
 @media (max-width: 600px) {
@@ -41,3 +43,6 @@
   .meta-row { grid-template-columns: 1fr 1fr; }
   .facts div { grid-template-columns: 6rem 1fr; }
 }
+
+/* Touch-only devices cannot drag the collage */
+@media (hover: none) { .collage-hint { display: none; } }
