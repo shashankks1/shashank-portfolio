@@ -19,10 +19,17 @@ for (const p of pages) {
     files.add(path.posix.normalize(path.posix.join(path.posix.dirname(p), decodeURI(u))));
   }
 }
-// stylesheets pull in their @imports
+// stylesheets pull in their @imports, and the images they reference with url()
 for (const f of [...files].filter(f => f.endsWith('.css'))) {
   const css = fs.readFileSync(path.join(SITE, f), 'utf8');
   for (const m of css.matchAll(/@import\s+'([^']+)'/g)) files.add(path.posix.join(path.posix.dirname(f), m[1]));
+}
+for (const f of [...files].filter(f => f.endsWith('.css'))) {
+  const css = fs.readFileSync(path.join(SITE, f), 'utf8');
+  for (const m of css.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/g)) {
+    if (m[1].startsWith('data:')) continue;
+    files.add(path.posix.normalize(path.posix.join(path.posix.dirname(f), m[1])));
+  }
 }
 
 let bytes = 0;

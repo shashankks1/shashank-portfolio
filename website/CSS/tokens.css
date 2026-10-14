@@ -13,6 +13,7 @@
      magenta = labels and metadata; lime = highlight, fill only, never text on paper (1.4:1) */
   --sks-magenta:     #D043C2;   /* his CV magenta — borders, large marks (3.6:1) */
   --sks-magenta-ink: #A62D99;   /* magenta for small text (5.5:1) */
+  --sks-magenta-deep: #8E2483;  /* small magenta text on the hero paper #D7D6CC (5.3:1) */
   --sks-lime:        #99E429;   /* highlight fill; ink on lime is 11:1 */
   --ink:      #111A33;     /* body text, a blue-black — 15.9:1 */
   --ink-2:    #4A5068;     /* captions, secondary text — 7.2:1 */
