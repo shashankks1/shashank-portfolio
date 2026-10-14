@@ -19,20 +19,23 @@
 }
 
 /* The hero text sits on a sheet of handmade deckled paper (Shashank, 2026-10-14;
-   photo: Annie Spratt, Unsplash). Nine-slice border-image: the torn edges keep their
-   shape at any size and only the flat middle stretches. Slices sit just inside the
-   measured deckle (top 139, right 52, bottom 47, left 100 px of the 1600px image). */
+   photo: Annie Spratt, Unsplash). The sheet always keeps its own proportion, 1600 × 1111:
+   it scales as a whole and is never stretched (his rule). Padding sits inside the
+   measured deckle (top 12.5%, right 3.3%, bottom 4.2%, left 6.3% of the image). */
 .hero-text {
-  grid-column: 1 / 10;
+  grid-column: 1 / -1;
   align-self: center;
+  width: min(100%, 1040px);
+  aspect-ratio: 1600 / 1111;
+  background: url('../assets/images/hero-paper.webp') center / 100% 100% no-repeat;   /* box has the image's ratio, so no distortion */
+  padding: 13% 9% 7% 10%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: var(--sp-6);
-  border-style: solid;
-  border-width: clamp(56px, 6.2vw, 96px) clamp(28px, 3.1vw, 48px) clamp(26px, 2.7vw, 42px) clamp(40px, 4.6vw, 72px);
-  border-image: url('../assets/images/hero-paper.webp') 160 80 70 120 fill stretch;
-  padding: clamp(4px, 1vw, 16px) clamp(12px, 2.4vw, 40px) clamp(16px, 2.4vw, 40px) clamp(4px, 1vw, 16px);
 }
+
+.hero-sheet, .hero-more { display: flex; flex-direction: column; gap: var(--sp-6); }
 
 .hero-now { font-size: 0.9375rem; color: var(--ink-2); }
 .hero-text .label { color: var(--sks-magenta-deep); }   /* the paper is darker than the page */
