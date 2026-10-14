@@ -33,7 +33,6 @@
 .hero-cue:hover::after { width: 100%; }
 
 .work { padding-top: var(--sp-16); }
-.work .section-head { margin-bottom: var(--sp-8); }
 
 /* ── WORK ────────────────────────────────────────── */
 .work { padding-bottom: var(--sp-8); }
