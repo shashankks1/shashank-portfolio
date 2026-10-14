@@ -18,20 +18,11 @@
   align-items: center;
 }
 
-/* The hero text sits on a sheet of handmade deckled paper (Shashank, 2026-10-14;
-   photo: Annie Spratt, Unsplash). The sheet always keeps its own proportion, 1600 × 1111:
-   it scales as a whole and is never stretched (his rule). Padding sits inside the
-   measured deckle (top 12.5%, right 3.3%, bottom 4.2%, left 6.3% of the image). */
 .hero-text {
-  grid-column: 1 / -1;
+  grid-column: 1 / 9;
   align-self: center;
-  width: min(100%, 1040px);
-  aspect-ratio: 1600 / 1111;
-  background: url('../assets/images/hero-paper.webp') center / 100% 100% no-repeat;   /* box has the image's ratio, so no distortion */
-  padding: 13% 9% 7% 10%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: var(--sp-6);
 }
 

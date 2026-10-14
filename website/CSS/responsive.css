@@ -32,18 +32,6 @@
 /* Phone */
 @media (max-width: 700px) {
   .work-grid { grid-template-columns: 1fr; }
-
-  /* The sheet is too small to hold everything at a readable size, so it carries the
-     label and name at its true proportion, and the intro sits below it */
-  .hero-text { aspect-ratio: auto; background: none; padding: 0; width: 100%; }
-  .hero-sheet {
-    aspect-ratio: 1600 / 1111;
-    background: url('../assets/images/hero-paper.webp') center / 100% 100% no-repeat;
-    padding: 13% 9% 7% 10%;
-    justify-content: center;
-    gap: var(--sp-3);
-  }
-  .hero-sheet .display { font-size: clamp(1.75rem, 8.4vw, 2.5rem); }
 }
 
 @media (max-width: 600px) {
