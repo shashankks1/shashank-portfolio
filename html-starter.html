@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Starter — Project Name</title>
+  <meta name="description" content="A minimal, responsive HTML starter template." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- Google Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Basic theme variables -->
+  <style>
+    :root{ --bg:#ffffff; --text:#111827; --muted:#6b7280; --accent:#1f2937; --max-width:1200px; }
+    html,body{height:100%;}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+    .container{max-width:var(--max-width); margin:0 auto; padding:1rem}
+    header{border-bottom:1px solid #e6e9ee}
+    nav{display:flex; align-items:center; justify-content:space-between; gap:1rem}
+    .nav-links a{margin-left:1rem; color:var(--muted); text-decoration:none; font-weight:500}
+    .hero{padding:4rem 0; text-align:center}
+    .hero h1{font-size:clamp(1.75rem,4.5vw,3rem); margin:0 0 .5rem}
+    .hero p{color:var(--muted); margin:0 0 1.25rem}
+    footer{border-top:1px solid #e6e9ee; padding:1.25rem 0; color:var(--muted); font-size:.95rem}
+    @media(min-width:768px){ .nav-links a{margin-left:1.5rem} .hero{padding:6rem 0} }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav>
+        <a href="/" aria-label="Homepage" style="font-weight:700; color:var(--accent); text-decoration:none">Project Name</a>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#work">Our Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Welcome — A Minimal HTML Starter</h1>
+        <p>Use this template as a clean starting point: responsive, accessible, and easy to extend.</p>
+        <p style="margin-top:1rem"><a href="#" style="background:#111827;color:#fff;padding:.6rem 1rem;border-radius:6px;text-decoration:none;">Get Started</a></p>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <h2>Featured Work</h2>
+        <p class="muted" style="color:var(--muted)">Add project cards or an image grid here.</p>
+        <!-- Example grid placeholder -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem">
+          <article style="border:1px solid #eee;padding:1rem;border-radius:8px">
+            <h3 style="margin:0 0 .5rem">Project Title</h3>
+            <p style="margin:0;color:var(--muted)">Short description of the project.</p>
+          </article>
+          <article style="border:1px solid #eee;padding:1rem;border-radius:8px">
+            <h3 style="margin:0 0 .5rem">Project Title</h3>
+            <p style="margin:0;color:var(--muted)">Short description of the project.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="padding:2rem 0">
+      <div class="container">
+        <h2>Contact</h2>
+        <p style="color:var(--muted)">A simple contact placeholder form (not functional).</p>
+        <form style="margin-top:1rem;display:grid;gap:.5rem;max-width:420px">
+          <input placeholder="Your name" style="padding:.6rem;border:1px solid #ddd;border-radius:6px" />
+          <input placeholder="Email" type="email" style="padding:.6rem;border:1px solid #ddd;border-radius:6px" />
+          <textarea placeholder="Message" rows="4" style="padding:.6rem;border:1px solid #ddd;border-radius:6px"></textarea>
+          <button type="button" style="padding:.6rem 1rem;border-radius:6px;background:var(--accent);color:#fff;border:0">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+        <div>&copy; " + new Date().getFullYear() + " Project Name</div>
+        <div style="color:var(--muted)">Built with a simple starter template</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Small helper to set current year (fallback if server-side not available)
+    (function(){
+      try{ document.querySelector('footer div').firstChild.textContent = '© ' + new Date().getFullYear() + ' Project Name'; }catch(e){}
+    })();
+  </script>
+</body>
+</html>

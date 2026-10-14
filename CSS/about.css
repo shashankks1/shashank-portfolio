@@ -1,0 +1,37 @@
+/* ── ABOUT PAGE ──────────────────────────────────── */
+.about-hero { padding: var(--sp-12) 0 var(--sp-12); }
+.about-hero .label { margin-bottom: var(--sp-6); }
+.about-title { max-width: 18ch; }
+
+/* The thread — career path drawn with the mark's stroke: runs + 45° risers */
+.thread { padding: var(--sp-8) 0 clamp(64px, 8vw, 120px); }
+.thread svg { width: 100%; height: auto; overflow: visible; }
+.thread .line { fill: none; stroke: var(--sks-blue); stroke-width: var(--stroke-bold); stroke-linecap: round; stroke-linejoin: round; }
+.thread .node { fill: var(--paper); stroke: var(--sks-blue); stroke-width: 3; }
+.thread .node--now { fill: var(--accent2); stroke: var(--sks-blue); }
+.thread .yr { font: 600 11px var(--sans); letter-spacing: .08em; fill: var(--sks-magenta-ink); }
+.thread .co { font: 400 16px var(--serif); fill: var(--ink); }
+.thread .ro { font: 400 12px var(--sans); fill: var(--ink-2); }
+.thread-list { display: none; }
+.thread-list li { display: grid; grid-template-columns: 4rem 1fr; gap: var(--sp-3); padding: var(--sp-3) 0 var(--sp-3) var(--sp-4); border-left: var(--stroke-bold) solid var(--sks-blue); }
+.thread-list li b { display: block; font-family: var(--serif); font-weight: 400; }
+
+.about-main { padding: 0 0 var(--sp-16); }
+.about-main .grid { row-gap: var(--sp-12); }
+.about-facts { grid-column: 1 / 5; align-self: start; }
+.about-body { grid-column: 6 / 12; }
+
+.about-body p {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  max-width: var(--measure);
+  margin-bottom: var(--sp-6);
+}
+
+.about-body p:first-child {
+  font-family: var(--serif);
+  font-size: var(--t-h2);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--sks-blue);
+}

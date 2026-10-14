@@ -1,0 +1,196 @@
+/* ── HERO ────────────────────────────────────────── */
+/* Fills the first screen (Shashank, review comment 2026-10-13); text sits at the vertical centre */
+.hero {
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  padding: var(--sp-12) 0 var(--sp-8);
+}
+
+.hero-grid {
+  flex: 1;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: var(--sp-8);
+  align-items: center;
+}
+
+.hero-text {
+  grid-column: 1 / 9;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.hero-sheet, .hero-more { display: flex; flex-direction: column; gap: var(--sp-6); }
+
+.hero-now { font-size: 0.9375rem; color: var(--ink-2); }
+
+.hero-cue { grid-column: 1 / -1; align-self: end; justify-self: start; position: relative; padding-bottom: 4px; }
+.hero-cue::after { content: ''; position: absolute; left: 0; bottom: 0; height: var(--stroke); width: 0; border-radius: 2px; background: var(--sks-deep); transition: width .2s ease; }
+.hero-cue:hover::after { width: 100%; }
+
+.work { padding-top: var(--sp-16); }
+
+/* ── WORK ────────────────────────────────────────── */
+.work { padding-bottom: var(--sp-8); }
+
+/* Projects as an interactive collage (Shashank, 2026-10-14).
+   Each piece is placed by left/top/width only; height follows the image, so no image
+   is cropped or re-proportioned. Hover or focus straightens and lifts a piece; on
+   desktop pieces can be dragged (collage.js). The index below is the plain version. */
+.collage-hint {
+  display: block;
+  text-align: right;
+  margin-bottom: var(--sp-4);
+}
+
+.collage {
+  position: relative;
+  aspect-ratio: 2 / 1;
+  margin-bottom: var(--sp-16);
+}
+
+.piece {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  z-index: var(--z);
+  transform: translate(var(--dx, 0px), var(--dy, 0px)) rotate(var(--r)) scale(var(--s, 1));
+  transition: transform 0.2s ease;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.piece img {
+  width: 100%;
+  height: auto;          /* the image's own proportion */
+  background: var(--surface);
+  outline: 1px solid var(--rule);
+  outline-offset: -1px;
+  pointer-events: none;
+}
+
+.piece-tag {
+  position: absolute;
+  left: 12px;
+  bottom: -14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1.5px solid var(--sks-blue);
+  font-size: var(--t-small);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--sks-blue);
+  white-space: nowrap;
+}
+
+.piece-no { font-size: var(--t-label); font-weight: 600; letter-spacing: 0.08em; color: var(--sks-magenta-ink); }
+
+/* Lifted: hover, keyboard focus, a hovered index row, or being dragged */
+.piece:hover,
+.piece:focus-visible,
+.piece.is-lifted,
+.piece.is-dragging { --r: 0deg; --s: 1.03; z-index: 50; }
+.piece.is-dragging { cursor: grabbing; transition: none; z-index: 60; }
+
+.piece:hover .piece-tag,
+.piece:focus-visible .piece-tag,
+.piece.is-lifted .piece-tag { background: var(--sks-lime); border-color: var(--ink); color: var(--ink); }
+
+.piece:hover .piece-no,
+.piece:focus-visible .piece-no,
+.piece.is-lifted .piece-no { color: var(--ink); }
+
+/* The index — the same six projects, plain */
+.work-index { border-top: 1px solid var(--rule); }
+
+.work-row {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 3fr) minmax(0, 4fr) minmax(0, 1.5fr) 1.2rem;
+  align-items: baseline;
+  gap: var(--gap);
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.work-row-no { font-size: var(--t-label); font-weight: 600; letter-spacing: 0.08em; color: var(--sks-magenta-ink); }
+.work-row-title { font-family: var(--serif); font-size: var(--t-h3); color: var(--sks-blue); }
+.work-row-meta { font-size: var(--t-small); color: var(--ink-2); }
+.work-row-year { font-size: var(--t-small); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.work-row::after {
+  content: '';
+  width: 0.9rem;
+  height: 0.9rem;
+  justify-self: end;
+  background: var(--sks-blue);
+  -webkit-mask: var(--arrow) center / contain no-repeat;
+          mask: var(--arrow) center / contain no-repeat;
+}
+
+.work-row:hover .work-row-title,
+.work-row:focus-visible .work-row-title,
+.work-row.is-lifted .work-row-title { color: var(--sks-deep); text-decoration: underline; text-decoration-color: var(--sks-lime); text-decoration-thickness: 4px; text-underline-offset: 6px; }
+
+@media (prefers-reduced-motion: reduce) { .piece { transition: none; } }
+
+/* ── ABOUT PULL + CONTACT — same ledger, same voice ── */
+.about-pull,
+.contact { padding: clamp(96px, 11vw, 168px) 0 var(--sp-16); }
+
+.ledger-row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: var(--sp-4);
+}
+
+.ledger-row > .label { grid-column: 1 / 4; padding-top: 0.75em; }
+.ledger-row > div { grid-column: 4 / 12; display: flex; flex-direction: column; gap: var(--sp-6); align-items: flex-start; }
+
+.about-pull-text {
+  font-family: var(--serif);
+  font-size: var(--t-h2);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 34ch;
+}
+
+/* Link-sized, in the accent (review comment 2026-10-14) */
+.contact-email {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--sks-blue);
+  padding-bottom: 3px;
+  word-break: break-word;
+}
+
+.contact-email::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 6px;
+  width: 100%;
+  border-radius: 3px;
+  background: var(--sks-lime);   /* the accent as a marker; the text itself stays blue */
+  z-index: -1;
+}
+
+.contact-email:hover { color: var(--sks-deep); }

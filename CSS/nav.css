@@ -1,0 +1,65 @@
+/* ── SITE HEADER ─────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Wider and taller, laid on the same 12-column ledger as the pages (review comment 2026-10-14):
+   mark in the label column, links in the right corner.
+   Shares the page container, so the mark always lines up with the content edge. */
+
+.site-header-inner {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: center;
+  height: var(--header-h);
+}
+
+.brand {
+  grid-column: 1 / 4;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--sks-blue);
+}
+
+.brand svg { width: 52px; height: auto; flex-shrink: 0; }   /* the 52 drawing at its own size */
+.brand span { color: var(--ink); font-weight: 500; font-size: 0.9375rem; }
+
+.site-header-role { display: none; }   /* v2 element, retired */
+
+.site-nav { grid-column: 4 / 13; justify-self: end; }   /* links in the right corner (review comment) */
+.nav-links { display: flex; gap: var(--sp-12); }
+
+.nav-links a {
+  position: relative;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  padding-bottom: 2px;
+}
+
+/* The one transition on the site — a stroke drawn in from the left, 0.2s */
+.nav-links a::after,
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: var(--stroke);
+  width: 0;
+  border-radius: 2px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] { color: var(--sks-blue); }
+
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after { width: 100%; }
