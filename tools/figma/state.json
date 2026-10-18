@@ -80,7 +80,10 @@
   "website page grouped into 2 sections",
   "tooling saved to tools/figma/"
  ],
- "pending": [],
+ "pending": [
+  "Aarna case frame (work/aarna.html, 2026-10-18) — run extract.mjs aarna after adding aarna to NAMES and uploading its 7 images",
+  "Home collage: add piece 06 Aarna (x 79.5%, y 1%, w 20%, r 2deg) and index row 06; MB Consulting becomes 07 (desktop + phone)"
+ ],
  "layout": {
   "desktop": {
    "w": 1440,
@@ -106,5 +109,5 @@
    "readCol": 762.7
   }
  },
- "updated": "2026-10-14"
+ "updated": "2026-10-18"
 }

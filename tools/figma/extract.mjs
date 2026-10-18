@@ -8,7 +8,7 @@ const require = createRequire('D:/VISTOFY/60-Tools/code-to-figma/package.json');
 const puppeteer = require('puppeteer-core');
 const sharp = createRequire('D:/VISTOFY/60-Tools/package.json')('sharp');
 const SITE = path.resolve('../../website');
-const NAMES = { 'vistofy-identity': 'Vistofy Identity', 'indi-teppich': 'Indi Teppich', learnet: 'Learnet Skills', 'vistofy-festivals': 'Vistofy Festival Line', copo: 'COPO', 'mb-consulting': 'MB Consulting' };
+const NAMES = { 'vistofy-identity': 'Vistofy Identity', 'indi-teppich': 'Indi Teppich', learnet: 'Learnet Skills', 'vistofy-festivals': 'Vistofy Festival Line', copo: 'COPO', aarna: 'Aarna', 'mb-consulting': 'MB Consulting' };
 const slugs = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(NAMES);
 const hashes = JSON.parse(fs.readFileSync('image-hashes.json', 'utf8'));
 fs.mkdirSync('out', { recursive: true });
