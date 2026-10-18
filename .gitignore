@@ -11,3 +11,9 @@ Research/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Figma sync scratch (screenshots, extracted payloads)
+tools/figma/out/
+
+# AARNA intermediates (label/logo renders, Blender output) — rebuilt by tools/build-aarna.mjs
+tools/aarna-src/

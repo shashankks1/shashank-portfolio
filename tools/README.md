@@ -12,6 +12,7 @@ They borrow libraries from the Vistofy tools: `sharp` from `D:\VISTOFY\60-Tools\
 | `overlay.mjs <in> <out> [size]` | Draws the 3×3 logo/footer rule over a festival template. |
 | `sheet.mjs <out> <cols> <cell> <files…>` | Makes a labelled contact sheet for picking images. |
 | `shot.mjs <html> <out> [w] [h]` | Takes a full-page screenshot. |
+| `figma/` | Keeps Figma and the site in sync (since 2026-10-14): file IDs, image hashes, extract/compare/upload scripts and the case-study builder. See `figma/README.md`. |
 | `assemble.mjs` + `pages/_head.html`, `_foot.html` | Wraps a case-study body in the shared nav and footer. The `vistofy` flag adds `noindex` and the do-not-deploy comment. |
 
 ## Rebuilding the intermediates (`grabs/`, `hi/`, `ov/`)

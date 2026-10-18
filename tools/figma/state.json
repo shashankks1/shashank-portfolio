@@ -1,0 +1,110 @@
+{
+ "runId": "sks-portfolio-figma-2026-10-14",
+ "fileKey": "l3cjfMaYeZYDqMcuOF3zdE",
+ "fileUrl": "https://www.figma.com/design/l3cjfMaYeZYDqMcuOF3zdE",
+ "scope": "foundations + components + website pages (desktop 1440, phone 390)",
+ "source": "D:/PORTFOLIO/assets/portfolio-latest/Shashank portfolio website/website (CSS tokens + pages)",
+ "entities": {
+  "collections": {
+   "Primitives": "VariableCollectionId:2:5",
+   "Color": "VariableCollectionId:2:18",
+   "Spacing": "VariableCollectionId:2:31",
+   "Radius": "VariableCollectionId:2:42",
+   "Stroke": "VariableCollectionId:2:45",
+   "Layout": "VariableCollectionId:2:49"
+  },
+  "variables": {},
+  "textStyles": "26 styles; fluid ones (Heading 1/2, Lead, Statement, Lede serif, Figure, Lead Link) hold the 1440-rendered size",
+  "pages": {
+   "Website": "0:1",
+   "Components": "2:2",
+   "Foundations": "2:3",
+   "Notes": "2:4"
+  },
+  "frames": {
+   "Foundations specimen": "3:2",
+   "Components": "6:14",
+   "Image library (section)": "4:2",
+   "Home — Desktop 1440": "10:2",
+   "Home — Phone 390": "10:149",
+   "About — Desktop 1440": "13:187",
+   "About — Phone 390": "13:298",
+   "Case — Vistofy Identity": "16:314",
+   "Case — Indi Teppich": "16:479",
+   "Case — Learnet Skills": "16:678",
+   "Case — Vistofy Festival Line": "17:490",
+   "Case — COPO": "17:627",
+   "Case — MB Consulting": "17:766",
+   "Notes — How this file works": "18:637",
+   "Section — Home & About": "18:707",
+   "Section — Case studies": "18:708"
+  },
+  "components": {
+   "Mark": "6:24",
+   "Arrow": "6:31",
+   "Tick": "6:34",
+   "Dot": "6:35",
+   "NavLink": "6:46",
+   "LinkArrow": "6:50",
+   "Button": "6:61",
+   "Tag": "6:65",
+   "PieceTag": "6:76",
+   "BackLink": "6:80",
+   "ContactEmail": "6:91",
+   "Header": "7:35",
+   "Footer": "7:57",
+   "IndexRow": "7:95",
+   "MetaItem": "7:105",
+   "SectionHeading": "7:109",
+   "PullQuote": "7:114",
+   "Credits": "7:122",
+   "NextProject": "7:128",
+   "FactRow": "14:322 (set; Desktop 7:137, Phone 14:316)",
+   "ThreadItem": "7:147"
+  },
+  "images": "image-hashes.json — site path → Figma imageHash (JPEG/PNG copies; WebP does not render via upload_assets). Library rects 4:3…4:97 in section 4:2 on Components."
+ },
+ "completedSteps": [
+  "discovery",
+  "foundations/variables+textstyles (43 vars, 14 styles)",
+  "foundations-specimen (frame 3:2, white auto-layout fills cleared)",
+  "assets-upload (48 images)",
+  "components batch A (11)",
+  "components batch B (10) + hug fix + piece tag Size axis",
+  "images re-uploaded as JPEG/PNG (WebP does not render via upload_assets)",
+  "fluid text styles set to 1440 rendered sizes",
+  "website-home (desktop+phone, verified side-by-side)",
+  "website-about (desktop+phone, verified side-by-side)",
+  "website-cases (6 × 1440, heights within ~20px of the live pages)",
+  "notes page 18:637",
+  "website page grouped into 2 sections",
+  "tooling saved to tools/figma/"
+ ],
+ "pending": [],
+ "layout": {
+  "desktop": {
+   "w": 1440,
+   "gutter": 56,
+   "gap": 28.8,
+   "col": 84.267,
+   "content": 1328,
+   "colsSpan": "n*84.267+(n-1)*28.8"
+  },
+  "measured": {
+   "bodyP": 697.1,
+   "caption": 574.1,
+   "leadHero": 605.9,
+   "heroText": 875.7,
+   "caseTitle": 839,
+   "caseDesc": 632.3,
+   "pullQuote": 661.2,
+   "aboutPull": 804,
+   "aboutTitle": 925.3,
+   "offset": 988.8,
+   "narrow": 423.5,
+   "h2col": 310.4,
+   "readCol": 762.7
+  }
+ },
+ "updated": "2026-10-14"
+}

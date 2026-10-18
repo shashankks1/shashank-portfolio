@@ -65,7 +65,8 @@ const tpl = path.resolve('tools/pages/_head.html');
 if (fs.existsSync(tpl)) {
   const t = fs.readFileSync(tpl, 'utf8').replace(/<link href="https:\/\/fonts\.googleapis\.com\/css2\?[^"]*" rel="stylesheet">/, FONTS)
     .replace(/<body[^>]*>/, '<body id="top">')
-    .replace(/[ \t]*<!-- ── (NAVIGATION|HEADER) ── -->\s*\n[\s\S]*?<\/(nav|header)>\n/, header('../', 'work') + '\n');
+    // same anchor as the pages: replace up to the </header> that precedes <main>, not the inner </nav>
+    .replace(/[ \t]*<!-- ── (NAVIGATION|HEADER) ── -->\s*\n[\s\S]*?<\/(nav|header)>\n(?=\s*\n?\s*<main>)/, header('../', 'work') + '\n');
   fs.writeFileSync(tpl, t);
   fs.writeFileSync(path.resolve('tools/pages/_foot.html'), '\n' + footer('../') + '\n\n</body>\n</html>\n');
   console.log('ok   tools/pages templates');
