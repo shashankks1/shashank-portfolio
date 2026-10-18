@@ -1,0 +1,67 @@
+/* ── TOKENS — design system v3 (2026-10-14): drawn from the SKS mark ──
+   Spec + live specimen: system.html. Sources: LOGO.svg (8 hand-corrected
+   sizes), the CV (Baskerville in blue, Inter, bold-caps labels), the
+   Creative Polymath brief (neutrals + one bold tone).
+   ──────────────────────────────────────────────────────────────────── */
+:root {
+  /* Colour — blue is the ink, not an accent */
+  --sks-blue: #2C57CA;     /* the mark, the name, headings, links, every stroke — 5.8:1 on paper */
+  --sks-deep: #163A9A;     /* labels, pressed and hover states */
+  --sks-wash: #E7EDFB;     /* hover tint */
+
+  /* Secondary + accent (Shashank, 2026-10-14). One job each:
+     magenta = labels and metadata; lime = highlight, fill only, never text on paper (1.4:1) */
+  --sks-magenta:     #D043C2;   /* his CV magenta — borders, large marks (3.6:1) */
+  --sks-magenta-ink: #A62D99;   /* magenta for small text (5.5:1) */
+  --sks-lime:        #99E429;   /* highlight fill; ink on lime is 11:1 */
+  --ink:      #111A33;     /* body text, a blue-black — 15.9:1 */
+  --ink-2:    #4A5068;     /* captions, secondary text — 7.2:1 */
+  --rule:     rgba(17, 26, 51, 0.16);
+  --paper:    #F6F4EE;     /* unbleached cotton */
+  --surface:  #ECE8DF;     /* greige — behind images */
+  --accent2:  var(--sks-lime);  /* what is happening now / next */
+
+  /* Type — the CV's pairing */
+  --serif: 'Libre Baskerville', Georgia, serif;
+  --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --t-display: clamp(2.5rem, 5vw, 4.5rem);
+  --t-h1:      clamp(2rem, 3.4vw, 3.125rem);
+  --t-h2:      clamp(1.5rem, 2.3vw, 2.125rem);
+  --t-h3:      1.3125rem;
+  --t-lead:    clamp(1.125rem, 1.45vw, 1.3125rem);
+  --t-body:    1.0625rem;          /* 17px */
+  --t-small:   0.875rem;
+  --t-label:   0.75rem;
+
+  /* The stroke — one weight, round ends */
+  --stroke: 2px;
+  --stroke-bold: 6px;
+
+  /* Space — 8px base */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-6: 24px;
+  --sp-8: 32px; --sp-12: 48px; --sp-16: 64px; --sp-24: 96px; --sp-32: 128px;
+
+  /* Layout — 12 columns you feel, not see */
+  --max:    1760px;   /* widened with the header, 2026-10-14 */
+  --gutter: clamp(20px, 4vw, 56px);
+  --gap:    clamp(16px, 2vw, 32px);
+  --measure: 65ch;
+  --header-h: 88px;
+
+  /* The arrow and the seam, drawn at the mark's angle with its round ends */
+  --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 12.5 L12.5 3.5 M6 3.5 H12.5 V10' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --stitch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='4'%3E%3Cline x1='2' y1='2' x2='10' y2='2' stroke='%232C57CA' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  --tick: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 20 L20 4' fill='none' stroke='%232C57CA' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E");
+
+  /* Legacy names — keep wip.html and components.html readable */
+  --bg-page: var(--paper);  --bg-surface: var(--surface);
+  --text-primary: var(--ink); --text-secondary: var(--ink-2); --text-disabled: var(--ink-2);
+  --border-subtle: var(--rule); --border-default: var(--rule);
+  --interactive: var(--sks-blue); --interactive-hover: var(--sks-deep);
+  --font-display: var(--serif); --font-body: var(--sans); --font-section: var(--sans);
+  --text-body: var(--t-body); --text-subhead: var(--t-lead); --text-h1: var(--t-h1); --text-h2: var(--t-h2);
+  --text-overline: var(--t-label); --body-max: var(--measure);
+  --accent: var(--sks-blue); --accent-ink: var(--sks-deep);
+  --fs-mono: var(--t-label); --fs-body: var(--t-body);
+}

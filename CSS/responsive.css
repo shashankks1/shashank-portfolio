@@ -1,0 +1,48 @@
+/* ── RESPONSIVE ──────────────────────────────────── */
+
+/* Tablet and down: the ledger folds into one column */
+@media (max-width: 900px) {
+  .hero-text { grid-column: 1 / -1; }
+
+  .nav-links { gap: var(--sp-8); }
+
+
+  .section-head .label, .section-head > div,
+  .ledger-row > .label, .ledger-row > div { grid-column: 1 / -1; }
+  .section-head .label, .ledger-row > .label { padding-top: 0; }
+
+  .case-body > .container > *,
+  .case-body > .container > h2,
+  .case-body > .container > .case-img-offset,
+  .case-body > .container > .meta-row { grid-column: 1 / -1; }
+  .case-body > .container > .case-img-offset--narrow { grid-column: 2 / 12; }
+  .case-body > .container > h2 + * { margin-top: 0; padding-top: 0; }
+  .case-body > .container > h2 { margin-bottom: var(--sp-6); }
+
+  .thread svg { display: none; }
+  .thread-list { display: block; }
+  .about-facts, .about-body { grid-column: 1 / -1; }
+}
+
+/* Phone */
+@media (max-width: 700px) {
+  /* Phones: no hover or drag, so the collage becomes a tilted two-column pile */
+  .collage-hint { display: none; }
+  .collage { aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-12) var(--sp-4); align-items: start; }
+  .piece { position: relative; left: auto; top: auto; width: auto; cursor: pointer; }
+  .piece-tag { font-size: 0.8125rem; padding: 5px 10px; max-width: calc(100% - 4px); left: 4px; white-space: normal; }
+  .work-row { grid-template-columns: 2.25rem minmax(0, 1fr) 1rem; row-gap: 2px; }
+  .work-row-meta, .work-row-year { grid-column: 2; }
+  .work-row::after { grid-column: 3; grid-row: 1; }
+}
+
+@media (max-width: 600px) {
+  :root { --header-h: 64px; }
+  .brand svg { width: 40px; }
+  .nav-links { gap: var(--sp-6); }
+  .meta-row { grid-template-columns: 1fr 1fr; }
+  .facts div { grid-template-columns: 6rem 1fr; }
+}
+
+/* Touch-only devices cannot drag the collage */
+@media (hover: none) { .collage-hint { display: none; } }
