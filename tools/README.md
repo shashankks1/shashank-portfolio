@@ -14,6 +14,7 @@ They borrow libraries from the Vistofy tools: `sharp` from `D:\VISTOFY\60-Tools\
 | `shot.mjs <html> <out> [w] [h]` | Takes a full-page screenshot. |
 | `build-aarna.mjs` | Builds the Aarna images (`website/assets/images/aarna/`) from `aarna-src/` (git-ignored). The header comment lists the commands that recreate `aarna-src/` from `D:\WORK\Freelance\AARNA INDIAN FOODS`. |
 | `aarna-jars.py` | Blender (5.2, OptiX) jar mockup: five 65 mm glass jars, each wrapped once in its 8 × 2 in label. Env `ONLY`, `U_FRONT`, `CAM`, `TZ` set up the single-jar close-up. Every render is captioned as a mockup. |
+| `export-pdf.mjs [out.pdf]` | The whole site as one PDF: desktop layout on 1440 × 900 pages, real text, links that jump inside the PDF, bookmarks. Sets every page break itself so no block is split; tall figures are scaled down whole. Default output `D:PORTFOLIOexports`. `PDF_DEBUG=<dir>` also saves the planned pages for checking. |
 | `figma/` | Keeps Figma and the site in sync (since 2026-10-14): file IDs, image hashes, extract/compare/upload scripts and the case-study builder. See `figma/README.md`. |
 | `assemble.mjs` + `pages/_head.html`, `_foot.html` | Wraps a case-study body in the shared nav and footer. The `vistofy` flag adds `noindex` and the do-not-deploy comment. |
 
