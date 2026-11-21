@@ -9,7 +9,7 @@ const SITE = path.resolve('website');
 const OUT = path.resolve(process.argv[2] || 'artifact-build');
 fs.rmSync(OUT, { recursive: true, force: true });
 
-const pages = ['index.html', 'about.html', 'system.html', ...fs.readdirSync(path.join(SITE, 'work')).map(f => `work/${f}`)];
+const pages = ['index.html', 'about.html', ...fs.readdirSync(path.join(SITE, 'work')).map(f => `work/${f}`)];
 const files = new Set(pages);
 for (const p of pages) {
   const h = fs.readFileSync(path.join(SITE, p), 'utf8');

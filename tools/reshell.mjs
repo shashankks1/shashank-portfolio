@@ -31,7 +31,6 @@ const footer = p => `  <!-- ── FOOTER ── -->
       <a href="${p}index.html" class="brand" aria-label="Home">${MARK52}<span>© 2026 Shashank Kumar Sinha</span></a>
       <div class="site-footer-links">
         <a href="mailto:sinha.shashank92@gmail.com">Email</a>
-        <a href="${p}system.html">Design system</a>
         <a href="#top">Back to top</a>
       </div>
     </div>
