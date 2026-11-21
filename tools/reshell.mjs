@@ -17,7 +17,7 @@ const header = (p, current) => `  <!-- ── HEADER ── -->
       </a>
       <nav class="site-nav" aria-label="Main">
         <ul class="nav-links">
-          <li><a href="${p}index.html#work"${current === 'work' ? ' aria-current="page"' : ''}>Work</a></li>
+          <li><a href="${p}work.html"${current === 'work' ? ' aria-current="page"' : ''}>Work</a></li>
           <li><a href="${p}about.html"${current === 'about' ? ' aria-current="page"' : ''}>About</a></li>
           <li><a href="${p}index.html#contact">Contact</a></li>
         </ul>
@@ -57,6 +57,7 @@ const fill = f => fs.readFileSync(f, 'utf8')
 
 reshell(path.join(SITE, 'index.html'), '', '', fill('tools/pages/home-main.html'));
 reshell(path.join(SITE, 'about.html'), '', 'about', fill('tools/pages/about-main.html'));
+reshell(path.join(SITE, 'work.html'), '', 'work', fill('tools/pages/work-main.html'));
 for (const f of fs.readdirSync(path.join(SITE, 'work'))) reshell(path.join(SITE, 'work', f), '../', 'work');
 
 // keep the case-study assembly templates in step

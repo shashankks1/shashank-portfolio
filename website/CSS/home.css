@@ -112,7 +112,12 @@
 .piece:focus-visible .piece-no,
 .piece.is-lifted .piece-no { color: var(--ink); }
 
-/* The index — the same six projects, plain */
+/* Work page — the heading, then the index */
+.work-hero { padding: var(--sp-12) 0 var(--sp-12); }
+.work-hero .label { margin-bottom: var(--sp-6); }
+.work-list { padding: 0 0 clamp(64px, 8vw, 120px); }
+
+/* The index — every project, plain */
 .work-index { border-top: 1px solid var(--rule); }
 
 .work-row {
