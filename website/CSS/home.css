@@ -11,7 +11,7 @@
   flex: 1;
   width: 100%;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 1fr;   /* the 'Selected work' cue row went with the work section, 2026-11-21 */
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--gap);
   row-gap: var(--sp-8);
@@ -28,7 +28,7 @@
 
 .hero-sheet, .hero-more { display: flex; flex-direction: column; gap: var(--sp-6); }
 
-.hero-now { font-size: 0.9375rem; color: var(--ink-2); }
+.hero-now { font-family: var(--mono); font-size: 0.9375rem; color: var(--ink-2); }
 
 .hero-cue { grid-column: 1 / -1; align-self: end; justify-self: start; position: relative; padding-bottom: 4px; }
 .hero-cue::after { content: ''; position: absolute; left: 0; bottom: 0; height: var(--stroke); width: 0; border-radius: 2px; background: var(--sks-deep); transition: width .2s ease; }
@@ -164,7 +164,7 @@
   line-height: 1.35;
   letter-spacing: -0.01em;
   color: var(--ink);
-  max-width: 34ch;
+  max-width: 24.28em; /* was 34ch in Baskerville; em keeps the Figma width under the mono face */
 }
 
 /* Link-sized, in the accent (review comment 2026-10-14) */

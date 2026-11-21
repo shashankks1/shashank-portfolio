@@ -1,7 +1,7 @@
 /* ── ABOUT PAGE ──────────────────────────────────── */
 .about-hero { padding: var(--sp-12) 0 var(--sp-12); }
 .about-hero .label { margin-bottom: var(--sp-6); }
-.about-title { max-width: 18ch; }
+.about-title { max-width: 12.85em; } /* was 18ch in Baskerville; em keeps the Figma width under the mono face */
 
 /* The thread — career path drawn with the mark's stroke: runs + 45° risers */
 .thread { padding: var(--sp-8) 0 clamp(64px, 8vw, 120px); }
@@ -10,7 +10,7 @@
 .thread .node { fill: var(--paper); stroke: var(--sks-blue); stroke-width: 3; }
 .thread .node--now { fill: var(--accent2); stroke: var(--sks-blue); }
 .thread .yr { font: 600 11px var(--sans); letter-spacing: .08em; fill: var(--sks-magenta-ink); }
-.thread .co { font: 400 16px var(--serif); fill: var(--ink); }
+.thread .co { font: 400 16px var(--baskerville); fill: var(--ink); }
 .thread .ro { font: 400 12px var(--sans); fill: var(--ink-2); }
 .thread-list { display: none; }
 .thread-list li { display: grid; grid-template-columns: 4rem 1fr; gap: var(--sp-3); padding: var(--sp-3) 0 var(--sp-3) var(--sp-4); border-left: var(--stroke-bold) solid var(--sks-blue); }

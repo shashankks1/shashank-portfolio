@@ -6,7 +6,7 @@ import path from 'node:path';
 import { mark, thread, threadList } from './sks.mjs';
 
 const SITE = path.resolve('website');
-const FONTS = '<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">';
+const FONTS = '<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">';
 const MARK52 = mark(52, 'Shashank Kumar Sinha').replace('role="img" aria-label="Shashank Kumar Sinha"', 'aria-hidden="true"');
 
 const header = (p, current) => `  <!-- ── HEADER ── -->

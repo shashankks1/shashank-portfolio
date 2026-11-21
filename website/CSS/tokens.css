@@ -22,7 +22,11 @@
   --accent2:  var(--sks-lime);  /* what is happening now / next */
 
   /* Type — the CV's pairing */
-  --serif: 'Libre Baskerville', Georgia, serif;
+  /* 2026-11-21, from Figma: every serif role (Display, H1-H3, Quote, Statement, Lede, Figure)
+     plus Lead, Meta and Tag now use JetBrains Mono. --serif keeps its name so every rule follows. */
+  --mono:  'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --serif: var(--mono);
+  --baskerville: 'Libre Baskerville', Georgia, serif;  /* only the About thread drawing, as in Figma */
   --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --t-display: clamp(2.5rem, 5vw, 4.5rem);

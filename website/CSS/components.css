@@ -59,11 +59,24 @@
 .tag {
   display: inline-flex;
   align-items: center;
-  font: 500 0.8125rem/1 var(--sans);
+  position: relative;
+  font: 500 0.8125rem/1 var(--mono);
   padding: 7px 12px;
   border-radius: 999px;
-  border: 1.5px solid var(--sks-magenta);
-  color: var(--sks-magenta-ink);
+  color: var(--sks-magenta-ink);   /* 2026-11-21, from Figma: no border; a lime dot sits between tags */
+}
+.tag + .tag { margin-left: calc(9px + var(--sp-2)); }
+.tag + .tag::before {
+  content: '';
+  position: absolute;
+  left: calc(-9px - var(--sp-2));
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--accent2);
+  transform: translateY(-50%);
 }
 
 .dot {
@@ -72,7 +85,7 @@
   height: 9px;
   border-radius: 50%;
   background: var(--accent2);
-  border: 1.5px solid var(--sks-blue);   /* lime alone is too faint on paper */
+  /* 2026-11-21, from Figma: the blue ring is gone; plain lime */
   margin-right: 8px;
   vertical-align: 1px;
 }
@@ -104,7 +117,7 @@
 .facts div { display: grid; grid-template-columns: 7.5rem 1fr; gap: var(--sp-4); padding: var(--sp-3) 0; border-top: 1px solid var(--rule); }
 .facts div:last-child { border-bottom: 1px solid var(--rule); }
 .facts dt { font-size: var(--t-label); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sks-magenta-ink); padding-top: 3px; }
-.facts dd { font-size: 0.9375rem; line-height: 1.5; }
+.facts dd { font-family: var(--mono); font-size: 0.9375rem; line-height: 1.5; }
 
 /* ── LEGACY FORM CONTROLS (components page) ── */
 .input-control, .textarea-control { font: 400 var(--t-body)/1.5 var(--sans); color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 8px; padding: 12px 14px; width: 100%; outline: none; }
