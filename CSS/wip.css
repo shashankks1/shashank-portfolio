@@ -1,0 +1,22 @@
+/* ── WORK IN PROGRESS PAGE ───────────────────────── */
+.wip-hero {
+  min-height: calc(100vh - 64px - 57px); /* full viewport minus nav and footer */
+  display: flex;
+  align-items: center;
+  padding: var(--sp-24) 0;
+}
+
+.wip-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--border-default);
+  margin: var(--sp-12) 0;
+}
+
+.wip-status {
+  font-size: var(--text-body);
+  letter-spacing: var(--track-body);
+  color: var(--text-disabled);
+  line-height: 1.6;
+  margin-bottom: var(--sp-6);
+}
